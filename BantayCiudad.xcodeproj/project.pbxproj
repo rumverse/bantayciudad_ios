@@ -416,6 +416,7 @@
 				7F1349891A32DB02001AC194 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F13498A1A32DB02001AC194 /* Build configuration list for PBXNativeTarget "BantayCiudadTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +425,7 @@
 				7F13498C1A32DB02001AC194 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
