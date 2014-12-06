@@ -13,7 +13,7 @@
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
 #define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 40
-#define DEFAULT_HEIGHT_HEADER                100.0f
+#define DEFAULT_HEIGHT_HEADER                200.0f
 #define MIN_HEIGHT_HEADER                    10.0f
 #define DEFAULT_Y_OFFSET                     ([[UIScreen mainScreen] bounds].size.height == 480.0f) ? -200.0f : -250.0f
 #define FULL_Y_OFFSET                        -200.0f
@@ -27,7 +27,7 @@
 
 @interface MainViewController ()<UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, GMSMapViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tblMain;
+@property (strong, nonatomic) UITableView *tblMain;
 @property (strong, nonatomic) GMSMapView *mapView;
 @property (nonatomic) float heighTableView;
 @property (nonatomic) float heighTableViewHeader;
@@ -66,15 +66,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.tblMain = [[UITableView alloc]  initWithFrame: CGRectMake(0, 20, SCREEN_WIDTH, self.heighTableView)];
+    self.tblMain.tableHeaderView  = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, self.heighTableViewHeader)];
+    [self.tblMain setBackgroundColor:[UIColor clearColor]];
+    
     // Add gesture to gestures
-    self.tapMapViewGesture      = [[UITapGestureRecognizer alloc] initWithTarget:self
+    self.tapMapViewGesture  = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(handleTapMapView:)];
-    self.tapTableViewGesture    = [[UITapGestureRecognizer alloc] initWithTarget:self
+    self.tapTableViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(handleTapTableView:)];
     self.tapTableViewGesture.delegate = self;
-    
     [self.tblMain.tableHeaderView addGestureRecognizer:self.tapMapViewGesture];
     [self.tblMain addGestureRecognizer:self.tapTableViewGesture];
+    
+    // Init selt as default tableview's delegate & datasource
+    self.tblMain.dataSource   = self;
+    self.tblMain.delegate     = self;
+    [self.view addSubview:self.tblMain];
     
     [self setupMapView];
 }
@@ -122,7 +130,7 @@
     [self.locationManager requestWhenInUseAuthorization];
     self.mapView = [[GMSMapView alloc] initWithFrame:CGRectMake(0, self.default_Y_mapView, SCREEN_WIDTH, self.heighTableView)];
     self.mapView.settings.myLocationButton = YES;
-    self.mapView.settings.compassButton = YES;
+    //self.mapView.settings.compassButton = YES;
     // Listen to the myLocation property of GMSMapView.
     [self.mapView addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context: nil];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -176,7 +184,7 @@
                         options: UIViewAnimationOptionCurveEaseOut
                      animations:^{
                          self.mapView.frame = CGRectMake(0, self.default_Y_mapView, self.mapView.frame.size.width, self.heighTableView);
-                         //self.tblMain.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.headerYOffSet, self.view.frame.size.width, self.heighTableViewHeader)];
+                         self.tblMain.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.headerYOffSet, self.view.frame.size.width, self.heighTableViewHeader)];
                          self.tblMain.frame = CGRectMake(0, self.default_Y_tableView, self.tblMain.frame.size.width, self.tblMain.frame.size.height);
                      }
                      completion:^(BOOL finished){
