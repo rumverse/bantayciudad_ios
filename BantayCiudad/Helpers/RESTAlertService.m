@@ -28,6 +28,8 @@ static NSString *const kEndpointGetAlert = @"/alerts/feeds";
                                                                         rootKeyPath:nil
                                                                              method:RKRequestMethodAny]];
     
+    [manager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:[GeoNamesRequest requestMapping] objectClass:[GeoNamesRequest class] rootKeyPath:nil method:RKRequestMethodGET]];
+    
     /**
      *  Response Descriptor
      */
