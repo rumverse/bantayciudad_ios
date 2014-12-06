@@ -1,5 +1,6 @@
 PODS:
   - AFNetworking (1.3.4)
+  - Google-Maps-iOS-SDK (1.9.0)
   - ISO8601DateFormatterValueTransformer (0.6.0):
     - RKValueTransformers (~> 1.1.0)
   - MagicalRecord (2.3.0-beta.3):
@@ -32,6 +33,7 @@ PODS:
   - TransitionKit (2.1.0)
 
 DEPENDENCIES:
+  - Google-Maps-iOS-SDK (~> 1.9)
   - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, tag `v2.3.0-beta.3`)
   - RestKit (~> 0.23.1)
   - SDWebImage (~> 3.7)
@@ -48,6 +50,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
+  Google-Maps-iOS-SDK: d176593f33f931a500474a46c2a3c3d6d4b187cd
   ISO8601DateFormatterValueTransformer: a705384ea6531255258e25b6480ba1180db703a0
   MagicalRecord: 23dfe0350eab4767cc1ce7d247af4e4cd54ee72c
   RestKit: 193a35cddae5198388977abaedad129f8acb978b

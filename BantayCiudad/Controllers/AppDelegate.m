@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 #import "AppConfiguration.h"
 #import <MagicalRecord/MagicalRecord.h>
@@ -25,6 +26,7 @@
     self.mainObjectManager = [config setMainObjectManager];
     [config defaultConfiguration];
     
+    [GMSServices provideAPIKey:@"AIzaSyB6zHYLbXhrFeIh3UASToRfp2Jg6gFbL7M"];//Google Maps
     return YES;
 }
 

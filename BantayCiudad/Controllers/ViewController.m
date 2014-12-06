@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 
-#import "RESTAlertService.h"
 
 @interface ViewController ()
 
@@ -19,14 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
-    
-    AlertsRequest *request = [AlertsRequest new];
-    request.zipCode = 1228;
-    
-    [service getAlertWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
-        NSLog(@"done");
-    }];
+
 
 }
 

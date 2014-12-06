@@ -41,9 +41,9 @@ static NSString *const kEndpointGetAlert = @"/alerts/feeds";
 }
 
 - (void)getAlertWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *, NSError *))completion{
-    [self handleStandardGETObject:request path:kEndpointGetAlert parameters:nil authRequired:NO finished:^(RESTResponse *response, NSError *error) {
-        NSLog(@"Results: %@",response.result);
-        completion(response, error);
+    [self handleStandardGETObject:request path:kEndpointGetAlert parameters:nil authRequired:NO finished:^( id result, NSError *error) {
+        NSLog(@"Results: %@",(RESTResponse *)result));
+        completion(result, error);
     }];
 }
 
