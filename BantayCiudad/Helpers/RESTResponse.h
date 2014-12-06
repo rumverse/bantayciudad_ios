@@ -13,10 +13,10 @@
 @interface RESTResponse : NSObject
 
 @property (nonatomic, strong) id result;
-
 @property (nonatomic, strong) NSString *error;
-
 @property (nonatomic, strong) NSString *status;
+@property (nonatomic, assign) NSInteger alertID;
+@property (nonatomic, assign) BOOL isSuccess;
 
 + (RKMapping *)responseMappingForResult:(NSString *)keyPath mapping:(RKMapping *)resultMapping;
 

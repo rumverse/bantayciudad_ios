@@ -14,7 +14,9 @@
 @property (nonatomic, strong) NSString *userTypeStr;
 @property (nonatomic, strong) NSString *alertTypeStr;
 @property (nonatomic, strong) NSNumber *zipCodeNum;
-
+@property (nonatomic, strong) NSNumber *longitudeNum;
+@property (nonatomic, strong) NSNumber *latitudeNum;
+@property (nonatomic, strong) NSNumber *userIDNum;
 
 @end
 
@@ -25,12 +27,13 @@
     [mapping addAttributeMappingsFromDictionary:@{
                                                   @"alertDescription": @"description",
                                                   @"zipCodeNum" : @"zip",
-                                                  @"latitude" : @"latitude",
-                                                  @"longitude": @"longitude",
+                                                  @"latitudeNum" : @"latitude",
+                                                  @"longitudeNum": @"longitude",
                                                   @"severity": @"severity",
                                                   @"alertTypeStr" : @"alert",
                                                   @"userTypeStr" : @"user_type",
-                                                  @"userID" : @"user_id"
+                                                  @"userIDNum" : @"user_id",
+                                                  @"userName" : @"username"
                                                   }];
     
     return mapping;
@@ -98,6 +101,18 @@
 
 -(void)setZipCode:(NSInteger)zipCode{
     self.zipCodeNum = [NSNumber numberWithInteger:zipCode];
+}
+
+- (void)setUserID:(NSInteger)userID{
+    self.userIDNum = [NSNumber numberWithInteger:userID];
+}
+
+- (void)setLatitude:(double)latitude{
+    self.latitudeNum = [NSNumber numberWithDouble:latitude];
+}
+
+- (void)setLongitude:(double)longitude{
+    self.longitudeNum = [NSNumber numberWithDouble:longitude];
 }
 
 @end
