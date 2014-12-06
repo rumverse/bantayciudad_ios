@@ -13,7 +13,7 @@
 
 - (void)sendAlertWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
 
-- (void)getAlertDetailWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
+- (void)getAlertDetailForID:(NSString *)alertID withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
 
 
 @end

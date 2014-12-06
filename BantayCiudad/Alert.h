@@ -19,8 +19,9 @@
 @property (nonatomic, retain) NSDate * dateCreated;
 @property (nonatomic, retain) NSString * severity;
 @property (nonatomic, retain) NSString * alertType;
-@property (nonatomic, retain) NSNumber * alertID;
+@property (nonatomic, retain) NSString * alertID;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSString * userType;
+@property (nonatomic, retain) NSString * photo;
 
 @end

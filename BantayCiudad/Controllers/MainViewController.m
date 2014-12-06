@@ -20,7 +20,7 @@
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
-#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 100
+#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 164
 #define DEFAULT_HEIGHT_HEADER                200.0f
 #define MIN_HEIGHT_HEADER                    10.0f
 #define DEFAULT_Y_OFFSET                     ([[UIScreen mainScreen] bounds].size.height == 480.0f) ? -200.0f : -250.0f
@@ -61,6 +61,7 @@
 @property (nonatomic) float heightMap;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addAlert;
+@property (nonatomic, strong) UISegmentedControl *segControl;
 
 @property (nonatomic, strong) NSArray *alert;
 
@@ -79,6 +80,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     
     self.tblMain = [[UITableView alloc]  initWithFrame: CGRectMake(0, 20, SCREEN_WIDTH, self.heighTableView)];
     self.tblMain.tableHeaderView  = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, self.heighTableViewHeader)];
@@ -182,6 +184,11 @@
     self.mapView.delegate = self;
     [self.view insertSubview:self.mapView
                 belowSubview: self.tblMain];
+    
+    self.segControl = [[UISegmentedControl alloc]initWithFrame:CGRectMake(0.0, 64.0, SCREEN_WIDTH,50.0)];
+    [self.tblMain insertSubview:self.segControl aboveSubview:self.mapView];
+    
+    
 }
 
 #pragma mark - Internal Methods
@@ -362,6 +369,7 @@
                     AlertsRequest *request = [AlertsRequest new];
                     NSString *zip = (NSString *)[firstData objectForKey:@"postalCode"];
                     request.zipCode = [zip integerValue];
+                    request.zipCode = 1605;
                     
                     [service getAlertsWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
                         NSLog(@"Println: %@",response.result);

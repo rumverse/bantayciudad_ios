@@ -19,12 +19,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="WwK-c0-z46">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PPX-eD-eo8"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PPX-eD-eo8">
+                            <connections>
+                                <segue destination="uV0-9B-vbV" kind="show" identifier="DetailViewControllerSegue" id="5VG-op-0JU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addAlert" destination="PPX-eD-eo8" id="Pzm-FF-k6m"/>
-                        <segue destination="uV0-9B-vbV" kind="show" id="Qvc-Na-C5d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1DL-HT-wWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -53,7 +56,7 @@
         <!--Detail View Controller-->
         <scene sceneID="74K-QN-lbn">
             <objects>
-                <viewController modalTransitionStyle="partialCurl" hidesBottomBarWhenPushed="YES" id="uV0-9B-vbV" customClass="DetailViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="partialCurl" hidesBottomBarWhenPushed="YES" id="uV0-9B-vbV" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="87v-sT-b8g"/>
                         <viewControllerLayoutGuide type="bottom" id="iQt-Js-tcz"/>
@@ -74,15 +77,7 @@
                                             </imageView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjl-4d-SqM" userLabel="Location">
                                                 <rect key="frame" x="88" y="113" width="229" height="15"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUl-we-hXT" userLabel="Title">
-                                                <rect key="frame" x="20" y="154" width="182" height="21"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -99,7 +94,6 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsh-s5-jlg">
                                                         <rect key="frame" x="8" y="8" width="284" height="84"/>
-                                                        <color key="backgroundColor" red="0.2665625344" green="0.61092768239999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="84" id="BpX-Js-KTN"/>
                                                             <constraint firstAttribute="width" constant="284" id="cNL-Wh-5pZ"/>
@@ -117,26 +111,23 @@
                                                     <constraint firstAttribute="height" constant="100" id="gbK-ht-8Tj"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNi-Pe-odt" userLabel="Location">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNi-Pe-odt" userLabel="Location">
                                                 <rect key="frame" x="88" y="80" width="229" height="25"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.65346686180000002" green="1" blue="0.68210874840000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="mJi-Ny-zoO" firstAttribute="leading" secondItem="ZXc-L0-ZDn" secondAttribute="leading" constant="10" id="Aak-ke-fCL"/>
                                             <constraint firstItem="mJi-Ny-zoO" firstAttribute="top" secondItem="s4o-Qa-GbJ" secondAttribute="bottom" constant="20" id="Rg1-dM-wN2"/>
                                             <constraint firstItem="s4o-Qa-GbJ" firstAttribute="leading" secondItem="ZXc-L0-ZDn" secondAttribute="leading" id="eFd-PJ-gI4"/>
-                                            <constraint firstItem="s4o-Qa-GbJ" firstAttribute="top" secondItem="ZXc-L0-ZDn" secondAttribute="top" constant="180" id="eaA-fL-B6X"/>
+                                            <constraint firstItem="s4o-Qa-GbJ" firstAttribute="top" secondItem="ZXc-L0-ZDn" secondAttribute="top" constant="150" id="eaA-fL-B6X"/>
                                             <constraint firstAttribute="width" constant="320" id="pH0-na-E04"/>
                                             <constraint firstAttribute="height" constant="519" id="sBI-mp-0C6"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.85501747949999996" green="0.40546746030000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ZXc-L0-ZDn" secondAttribute="trailing" id="2DU-6f-mbF"/>
                                     <constraint firstAttribute="height" constant="519" id="3DW-5X-3vV"/>
@@ -165,7 +156,6 @@
                         <outlet property="locationLabel" destination="Gjl-4d-SqM" id="Wbm-0S-18D"/>
                         <outlet property="mainContentViewHeightConstraints" destination="sBI-mp-0C6" id="X1Y-E9-5cu"/>
                         <outlet property="nameLabel" destination="UNi-Pe-odt" id="M2W-Uv-m2Z"/>
-                        <outlet property="titleLabel" destination="UUl-we-hXT" id="aX8-jy-1VI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltk-Wc-btl" userLabel="First Responder" sceneMemberID="firstResponder"/>

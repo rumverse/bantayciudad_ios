@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, AlertType) {
     Medical,
     Disaster,
     Crime,
-    None
+    Unknown
 };
 
 @interface AlertsRequest : RESTRequest

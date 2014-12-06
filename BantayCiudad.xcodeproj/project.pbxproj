@@ -159,8 +159,8 @@
 				382387AC1A32F2F000A734CD /* AppDelegate.m */,
 				382387A61A32F28300A734CD /* ViewController.h */,
 				382387A71A32F28300A734CD /* ViewController.m */,
-				382387B11A32F98500A734CD /* DetailViewController.m */,
 				382387B21A32F98500A734CD /* DetailViewController.h */,
+				382387B11A32F98500A734CD /* DetailViewController.m */,
 				7F65F1A91A331061000ED52D /* MainViewController.h */,
 				7F65F1AA1A331061000ED52D /* MainViewController.m */,
 			);

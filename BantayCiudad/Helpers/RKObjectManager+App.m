@@ -8,7 +8,7 @@
 
 #import "RKObjectManager+App.h"
 
-NSString *const kBaseURL = @"http://104.131.55.35";
+NSString *const kBaseURL = @"http://api.bantayciudad.com";
 NSString *const kImageURL = @"http://bantayciudad.com/image_api/";
 
 @implementation RKObjectManager (App)

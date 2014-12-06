@@ -26,7 +26,8 @@
                                                        @"longitude":@"longitude",
                                                        @"createdAt":@"dateCreated",
                                                        @"user_type":@"userType",
-                                                       @"username":@"userName"}];
+                                                       @"username":@"userName",
+                                                       @"photo":@"photo"}];
     return alertMapping;
 }
 
