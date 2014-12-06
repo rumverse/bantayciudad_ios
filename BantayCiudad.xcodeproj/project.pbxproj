@@ -12,10 +12,15 @@
 		382387B31A32F98500A734CD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387B11A32F98500A734CD /* DetailViewController.m */; };
 		7F1349671A32DB01001AC194 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1349661A32DB01001AC194 /* main.m */; };
 		7F13496D1A32DB01001AC194 /* BantayCiudad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F13496B1A32DB01001AC194 /* BantayCiudad.xcdatamodeld */; };
-		7F1349731A32DB01001AC194 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F1349711A32DB01001AC194 /* Main.storyboard */; };
 		7F1349751A32DB01001AC194 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F1349741A32DB01001AC194 /* Images.xcassets */; };
-		7F1349781A32DB01001AC194 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F1349761A32DB01001AC194 /* LaunchScreen.xib */; };
 		7F1349841A32DB02001AC194 /* BantayCiudadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1349831A32DB02001AC194 /* BantayCiudadTests.m */; };
+		7F65F19A1A330B90000ED52D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 7F65F1951A330B90000ED52D /* LICENSE */; };
+		7F65F19B1A330B90000ED52D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1961A330B90000ED52D /* README.md */; };
+		7F65F19C1A330B90000ED52D /* SLParallaxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1991A330B90000ED52D /* SLParallaxController.m */; };
+		7F65F1A71A330C34000ED52D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F65F1A31A330C34000ED52D /* LaunchScreen.xib */; };
+		7F65F1A81A330C34000ED52D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F65F1A51A330C34000ED52D /* Main.storyboard */; };
+		7F65F1AB1A331061000ED52D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1AA1A331061000ED52D /* MainViewController.m */; };
+		F9BE0604AFA5FE20A0CA29BA /* libPods-BantayCiudad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBAE706C2CFBE66E9C610869 /* libPods-BantayCiudad.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,16 +40,25 @@
 		382387AC1A32F2F000A734CD /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		382387B11A32F98500A734CD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		382387B21A32F98500A734CD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		4A3C4C79C80F7487947C24AC /* Pods-BantayCiudad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BantayCiudad.release.xcconfig"; path = "Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad.release.xcconfig"; sourceTree = "<group>"; };
+		7472C678B6794F360D163D4D /* Pods-BantayCiudad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BantayCiudad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad.debug.xcconfig"; sourceTree = "<group>"; };
 		7F1349611A32DB01001AC194 /* BantayCiudad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BantayCiudad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1349651A32DB01001AC194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F1349661A32DB01001AC194 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7F13496C1A32DB01001AC194 /* BantayCiudad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BantayCiudad.xcdatamodel; sourceTree = "<group>"; };
-		7F1349721A32DB01001AC194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F1349741A32DB01001AC194 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7F1349771A32DB01001AC194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7F13497D1A32DB02001AC194 /* BantayCiudadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BantayCiudadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1349821A32DB02001AC194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F1349831A32DB02001AC194 /* BantayCiudadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BantayCiudadTests.m; sourceTree = "<group>"; };
+		7F65F1951A330B90000ED52D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		7F65F1961A330B90000ED52D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7F65F1981A330B90000ED52D /* SLParallaxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLParallaxController.h; sourceTree = "<group>"; };
+		7F65F1991A330B90000ED52D /* SLParallaxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLParallaxController.m; sourceTree = "<group>"; };
+		7F65F1A41A330C34000ED52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = BantayCiudad/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
+		7F65F1A61A330C34000ED52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = BantayCiudad/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		7F65F1A91A331061000ED52D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		7F65F1AA1A331061000ED52D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		EBAE706C2CFBE66E9C610869 /* libPods-BantayCiudad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BantayCiudad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9BE0604AFA5FE20A0CA29BA /* libPods-BantayCiudad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +89,8 @@
 				382387A71A32F28300A734CD /* ViewController.m */,
 				382387B11A32F98500A734CD /* DetailViewController.m */,
 				382387B21A32F98500A734CD /* DetailViewController.h */,
+				7F65F1A91A331061000ED52D /* MainViewController.h */,
+				7F65F1AA1A331061000ED52D /* MainViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -89,10 +106,19 @@
 		382387A91A32F28300A734CD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7F1349761A32DB01001AC194 /* LaunchScreen.xib */,
-				7F1349711A32DB01001AC194 /* Main.storyboard */,
+				7F65F1A31A330C34000ED52D /* LaunchScreen.xib */,
+				7F65F1A51A330C34000ED52D /* Main.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3C679D19AA58F234498A00F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7472C678B6794F360D163D4D /* Pods-BantayCiudad.debug.xcconfig */,
+				4A3C4C79C80F7487947C24AC /* Pods-BantayCiudad.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		7F1349581A32DB01001AC194 = {
@@ -101,6 +127,8 @@
 				7F1349631A32DB01001AC194 /* BantayCiudad */,
 				7F1349801A32DB02001AC194 /* BantayCiudadTests */,
 				7F1349621A32DB01001AC194 /* Products */,
+				3C679D19AA58F234498A00F2 /* Pods */,
+				B071DCE92193BB5F89F06FAC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +144,7 @@
 		7F1349631A32DB01001AC194 /* BantayCiudad */ = {
 			isa = PBXGroup;
 			children = (
+				7F65F1931A330B12000ED52D /* Helpers */,
 				382387A81A32F28300A734CD /* Model */,
 				382387A91A32F28300A734CD /* View */,
 				382387A51A32F28300A734CD /* Controllers */,
@@ -151,6 +180,41 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7F65F1931A330B12000ED52D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7F65F1941A330B90000ED52D /* SLParallaxController */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7F65F1941A330B90000ED52D /* SLParallaxController */ = {
+			isa = PBXGroup;
+			children = (
+				7F65F1951A330B90000ED52D /* LICENSE */,
+				7F65F1961A330B90000ED52D /* README.md */,
+				7F65F1971A330B90000ED52D /* SLParallaxController */,
+			);
+			path = SLParallaxController;
+			sourceTree = "<group>";
+		};
+		7F65F1971A330B90000ED52D /* SLParallaxController */ = {
+			isa = PBXGroup;
+			children = (
+				7F65F1981A330B90000ED52D /* SLParallaxController.h */,
+				7F65F1991A330B90000ED52D /* SLParallaxController.m */,
+			);
+			path = SLParallaxController;
+			sourceTree = "<group>";
+		};
+		B071DCE92193BB5F89F06FAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBAE706C2CFBE66E9C610869 /* libPods-BantayCiudad.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,9 +222,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F1349871A32DB02001AC194 /* Build configuration list for PBXNativeTarget "BantayCiudad" */;
 			buildPhases = (
+				941EA5E53096EED61CF10C27 /* Check Pods Manifest.lock */,
 				7F13495D1A32DB01001AC194 /* Sources */,
 				7F13495E1A32DB01001AC194 /* Frameworks */,
 				7F13495F1A32DB01001AC194 /* Resources */,
+				845279F9C374E1BD6EF18E6B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,9 +297,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F1349731A32DB01001AC194 /* Main.storyboard in Resources */,
-				7F1349781A32DB01001AC194 /* LaunchScreen.xib in Resources */,
+				7F65F19A1A330B90000ED52D /* LICENSE in Resources */,
+				7F65F1A71A330C34000ED52D /* LaunchScreen.xib in Resources */,
 				7F1349751A32DB01001AC194 /* Images.xcassets in Resources */,
+				7F65F1A81A330C34000ED52D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,12 +313,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		845279F9C374E1BD6EF18E6B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		941EA5E53096EED61CF10C27 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7F13495D1A32DB01001AC194 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F65F19B1A330B90000ED52D /* README.md in Sources */,
 				382387B31A32F98500A734CD /* DetailViewController.m in Sources */,
+				7F65F19C1A330B90000ED52D /* SLParallaxController.m in Sources */,
+				7F65F1AB1A331061000ED52D /* MainViewController.m in Sources */,
 				382387AD1A32F2F000A734CD /* AppDelegate.m in Sources */,
 				7F13496D1A32DB01001AC194 /* BantayCiudad.xcdatamodeld in Sources */,
 				382387AA1A32F28300A734CD /* ViewController.m in Sources */,
@@ -278,22 +381,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7F1349711A32DB01001AC194 /* Main.storyboard */ = {
+		7F65F1A31A330C34000ED52D /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7F1349721A32DB01001AC194 /* Base */,
-			);
-			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		7F1349761A32DB01001AC194 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7F1349771A32DB01001AC194 /* Base */,
+				7F65F1A41A330C34000ED52D /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = ..;
+			sourceTree = "<group>";
+		};
+		7F65F1A51A330C34000ED52D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F65F1A61A330C34000ED52D /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -377,6 +478,7 @@
 		};
 		7F1349881A32DB02001AC194 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7472C678B6794F360D163D4D /* Pods-BantayCiudad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -389,6 +491,7 @@
 		};
 		7F1349891A32DB02001AC194 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A3C4C79C80F7487947C24AC /* Pods-BantayCiudad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
