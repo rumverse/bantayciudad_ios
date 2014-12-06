@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1914B50E5F3C39BF1B3E6FA3 /* libPods-BantayCiudad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E82E7737437BD7978D09F34 /* libPods-BantayCiudad.a */; };
 		7F1349671A32DB01001AC194 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1349661A32DB01001AC194 /* main.m */; };
 		7F13496A1A32DB01001AC194 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1349691A32DB01001AC194 /* AppDelegate.m */; };
 		7F13496D1A32DB01001AC194 /* BantayCiudad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F13496B1A32DB01001AC194 /* BantayCiudad.xcdatamodeld */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		693904B647F70145BD1E1500 /* Pods-BantayCiudad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BantayCiudad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad.debug.xcconfig"; sourceTree = "<group>"; };
 		7F1349611A32DB01001AC194 /* BantayCiudad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BantayCiudad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1349651A32DB01001AC194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F1349661A32DB01001AC194 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -42,6 +44,8 @@
 		7F13497D1A32DB02001AC194 /* BantayCiudadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BantayCiudadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1349821A32DB02001AC194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F1349831A32DB02001AC194 /* BantayCiudadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BantayCiudadTests.m; sourceTree = "<group>"; };
+		8E82E7737437BD7978D09F34 /* libPods-BantayCiudad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BantayCiudad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90AFE326C60B676C40A93FB2 /* Pods-BantayCiudad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BantayCiudad.release.xcconfig"; path = "Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1914B50E5F3C39BF1B3E6FA3 /* libPods-BantayCiudad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,12 +67,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BF845212FEFFB7274F5F8D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				693904B647F70145BD1E1500 /* Pods-BantayCiudad.debug.xcconfig */,
+				90AFE326C60B676C40A93FB2 /* Pods-BantayCiudad.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		57943D98A487B51FBF3DD513 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E82E7737437BD7978D09F34 /* libPods-BantayCiudad.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7F1349581A32DB01001AC194 = {
 			isa = PBXGroup;
 			children = (
 				7F1349631A32DB01001AC194 /* BantayCiudad */,
 				7F1349801A32DB02001AC194 /* BantayCiudadTests */,
 				7F1349621A32DB01001AC194 /* Products */,
+				4BF845212FEFFB7274F5F8D4 /* Pods */,
+				57943D98A487B51FBF3DD513 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,14 +107,11 @@
 		7F1349631A32DB01001AC194 /* BantayCiudad */ = {
 			isa = PBXGroup;
 			children = (
-				7F1349681A32DB01001AC194 /* AppDelegate.h */,
-				7F1349691A32DB01001AC194 /* AppDelegate.m */,
-				7F13496E1A32DB01001AC194 /* ViewController.h */,
-				7F13496F1A32DB01001AC194 /* ViewController.m */,
-				7F1349711A32DB01001AC194 /* Main.storyboard */,
-				7F1349741A32DB01001AC194 /* Images.xcassets */,
-				7F1349761A32DB01001AC194 /* LaunchScreen.xib */,
-				7F13496B1A32DB01001AC194 /* BantayCiudad.xcdatamodeld */,
+				F94871951A32F4BB00BBBADD /* Resources */,
+				F94871941A32F4B300BBBADD /* Helpers */,
+				F94871931A32F4AD00BBBADD /* Controllers */,
+				F94871921A32F4A300BBBADD /* Views */,
+				F94871911A32F48A00BBBADD /* Model */,
 				7F1349641A32DB01001AC194 /* Supporting Files */,
 			);
 			path = BantayCiudad;
@@ -122,6 +143,49 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F94871911A32F48A00BBBADD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7F13496B1A32DB01001AC194 /* BantayCiudad.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F94871921A32F4A300BBBADD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F1349711A32DB01001AC194 /* Main.storyboard */,
+				7F1349761A32DB01001AC194 /* LaunchScreen.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F94871931A32F4AD00BBBADD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7F1349681A32DB01001AC194 /* AppDelegate.h */,
+				7F1349691A32DB01001AC194 /* AppDelegate.m */,
+				7F13496E1A32DB01001AC194 /* ViewController.h */,
+				7F13496F1A32DB01001AC194 /* ViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F94871941A32F4B300BBBADD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		F94871951A32F4BB00BBBADD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7F1349741A32DB01001AC194 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F1349871A32DB02001AC194 /* Build configuration list for PBXNativeTarget "BantayCiudad" */;
 			buildPhases = (
+				C72715B24143105A4629853D /* Check Pods Manifest.lock */,
 				7F13495D1A32DB01001AC194 /* Sources */,
 				7F13495E1A32DB01001AC194 /* Frameworks */,
 				7F13495F1A32DB01001AC194 /* Resources */,
+				0A6D29F5AE341AC638F4A98F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -216,6 +282,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A6D29F5AE341AC638F4A98F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C72715B24143105A4629853D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7F13495D1A32DB01001AC194 /* Sources */ = {
@@ -345,6 +444,7 @@
 		};
 		7F1349881A32DB02001AC194 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 693904B647F70145BD1E1500 /* Pods-BantayCiudad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BantayCiudad/Info.plist;
@@ -355,6 +455,7 @@
 		};
 		7F1349891A32DB02001AC194 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90AFE326C60B676C40A93FB2 /* Pods-BantayCiudad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BantayCiudad/Info.plist;
