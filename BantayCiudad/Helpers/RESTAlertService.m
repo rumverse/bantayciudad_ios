@@ -11,11 +11,12 @@
 #import "RESTResponse.h"
 
 #import "Alert+REST.h"
-
+#import "Location+REST.h"
+#import "SafetyScore+REST.h"
 
 static NSString *const kEndpointGetAlert = @"/alerts/feeds";
 static NSString *const kEndpointSendAlert = @"/alerts";
-
+static NSString *const kEndpointLocation = @"/location/";
 @implementation RESTAlertService
 
 + (void)configureEndpoints:(RKObjectManager *)manager{
@@ -44,6 +45,12 @@ static NSString *const kEndpointSendAlert = @"/alerts";
                                                                            pathPattern:kEndpointSendAlert
                                                                                keyPath:nil
                                                                            statusCodes:okStatusCodes]];
+    
+    [manager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:[RESTResponse responseMappingForResult:@"result" mapping:[Location objectMappingForStore:manager.managedObjectStore]]
+                                                                                method:RKRequestMethodGET
+                                                                           pathPattern:kEndpointLocation
+                                                                               keyPath:nil
+                                                                           statusCodes:okStatusCodes]];
 
 }
 
@@ -61,4 +68,15 @@ static NSString *const kEndpointSendAlert = @"/alerts";
     }];
 }
 
+- (void)getPin:(NSInteger) zip withCompletion:(void (^)(RESTResponse *, NSError *))completion
+{
+    NSDictionary *param = @{
+                            @"zip": @(zip),
+                            };
+    
+    [self handleStandardGETObject:nil forEntity:YES path:kEndpointLocation parameters:param authRequired:NO finished:^(id result, NSError *error) {
+        RESTResponse *response = (RESTResponse *)result;
+        completion(response, completion);
+    }];
+}
 @end

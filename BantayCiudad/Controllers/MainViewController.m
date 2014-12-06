@@ -10,7 +10,8 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <AFNetworking/AFJSONRequestOperation.h>
 #import "RESTAlertService.h"
-
+#import "Location.h"
+#import "SafetyScore.h"
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
@@ -27,7 +28,7 @@
 #define ZOOM 15.5
 #define VIEWANGLE 45
 //#define DISTANCE 1609.34
-#define DISTANCE 5
+#define DISTANCE 500
 @interface MainViewController ()<UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, GMSMapViewDelegate>
 
 @property (strong, nonatomic) UITableView *tblMain;
@@ -324,6 +325,7 @@
     
     if(distance >= DISTANCE || !self.firstLocation)
     {
+        [self.mapView clear];
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.geonames.org/findNearbyPostalCodesJSON?lat=%f&lng=%f&username=bugmenotuser", self.mapView.myLocation.coordinate.latitude, self.mapView.myLocation.coordinate.longitude]];
         NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
         AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -335,6 +337,32 @@
                 if([dic objectForKey:@"postalCodes"] != [NSNull null])
                 {
                     NSArray *zipCodeArray = [dic objectForKey:@"postalCodes"];
+                    
+//                    GMSMutablePath *poly = [GMSMutablePath path];
+//                    //Add overlay
+//                    for (NSDictionary *d in zipCodeArray)
+//                    {
+//                        float lat = 0;
+//                        float lng = 0;
+//                        if([d objectForKey:@"lat"] != [NSNull null])
+//                        {
+//                            NSString *s = (NSString *) [d objectForKey:@"lat"];
+//                            lat = s.floatValue;
+//                        }
+//                    
+//                        if([d objectForKey:@"lng"] != [NSNull null])
+//                        {
+//                            NSString *s = (NSString *) [d objectForKey:@"lng"];
+//                            lng = s.floatValue;
+//                        }
+//                        [poly addCoordinate:CLLocationCoordinate2DMake(lat, lng)];
+//                    }
+//                    
+//                    GMSPolygon *polygon = [GMSPolygon polygonWithPath:poly];
+//                    polygon.fillColor = [UIColor colorWithRed:0 green:0.25 blue:0 alpha:0.3];
+//                    polygon.strokeColor = [UIColor greenColor];
+//                    polygon.strokeWidth = 5;
+//                    polygon.map = self.mapView;
                     
                     NSDictionary *firstData = [zipCodeArray objectAtIndex:1];
                     
@@ -350,17 +378,36 @@
                         //TODO: Parse data
                     }];
                     
+                    [service getPin:[zip integerValue] withCompletion:^(RESTResponse *response, NSError *error) {
+                        Location *loc = (Location *)response.result;
+                        
+                        GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
+                        marker.title = loc.location;
+//                        marker.snippet = [NSString stringWithFormat: @"Disaster: %@\nDrugs: %@\nViolence: %@\nFire: %@\nTraffic: %@\nOverall: %@\n", loc.safety.disaster, loc.safety.drugs, loc.safety.violence, loc.safety.fire, loc.safety.traffic, loc.safety.overall];
+                        NSString *overall = @"0.0";
+                        
+                        if(loc.safety.overall != nil)
+                            overall = loc.safety.overall;
+                        
+                        marker.snippet = [NSString stringWithFormat:@"Safety Score: %@", overall];
+                        marker.infoWindowAnchor = CGPointMake(0.5, 0.5);
+                        marker.map = self.mapView;
+                        
+                        [self.mapView setSelectedMarker:marker];
+                        
+                        GMSCameraPosition *cam = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
+                                                                             longitude:location.coordinate.longitude
+                                                                                  zoom:ZOOM
+                                                                               bearing:BEARING viewingAngle:VIEWANGLE];
+                        [self.mapView animateToCameraPosition:cam];
+                    }];
                 }
             }
 
         } failure:nil];
         [operation start];
         
-        GMSCameraPosition *cam = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
-                                                             longitude:location.coordinate.longitude
-                                                                  zoom:ZOOM
-                                                               bearing:BEARING viewingAngle:VIEWANGLE];
-        [self.mapView animateToCameraPosition:cam];
+        
         
         self.firstLocation = location;
     }
@@ -369,5 +416,14 @@
         self.firstLocation = location;
     
 }
+
+//- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker
+//{
+//    UIView *view = [[UIView alloc] init];
+//    view.frame = CGRectMake(0, 0, 280, 40);
+//    view.backgroundColor = [UIColor colorWithRed:0.5 green:0.8 blue:0.4 alpha:1.0];
+//    
+//    return view;
+//}
 
 @end
