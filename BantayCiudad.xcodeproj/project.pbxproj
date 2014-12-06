@@ -19,6 +19,9 @@
 		7F65F1A71A330C34000ED52D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F65F1A31A330C34000ED52D /* LaunchScreen.xib */; };
 		7F65F1A81A330C34000ED52D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F65F1A51A330C34000ED52D /* Main.storyboard */; };
 		7F65F1AB1A331061000ED52D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1AA1A331061000ED52D /* MainViewController.m */; };
+		7F65F1AE1A335E72000ED52D /* GeoNamesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1AD1A335E72000ED52D /* GeoNamesResponse.m */; };
+		7F65F1B11A336105000ED52D /* GeoNamesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1B01A336105000ED52D /* GeoNamesRequest.m */; };
+		7F65F1B61A3368E7000ED52D /* BantayCiudad.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1B51A3368E7000ED52D /* BantayCiudad.xcdatamodel */; };
 		F9BE0604AFA5FE20A0CA29BA /* libPods-BantayCiudad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBAE706C2CFBE66E9C610869 /* libPods-BantayCiudad.a */; };
 		F9BFCBDF1A33367800912C46 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFCBDE1A33367800912C46 /* Alert.m */; };
 		F9BFCBE51A3336DC00912C46 /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFCBE41A3336DC00912C46 /* UserRequest.m */; };
@@ -68,6 +71,11 @@
 		7F65F1A61A330C34000ED52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = BantayCiudad/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		7F65F1A91A331061000ED52D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		7F65F1AA1A331061000ED52D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		7F65F1AC1A335E72000ED52D /* GeoNamesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoNamesResponse.h; sourceTree = "<group>"; };
+		7F65F1AD1A335E72000ED52D /* GeoNamesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoNamesResponse.m; sourceTree = "<group>"; };
+		7F65F1AF1A336105000ED52D /* GeoNamesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoNamesRequest.h; sourceTree = "<group>"; };
+		7F65F1B01A336105000ED52D /* GeoNamesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoNamesRequest.m; sourceTree = "<group>"; };
+		7F65F1B51A3368E7000ED52D /* BantayCiudad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = BantayCiudad.xcdatamodel; path = BantayCiudad/BantayCiudad.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		9475BB2F7F689FFB8F34CD71 /* Pods-BantayCiudad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BantayCiudad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad.debug.xcconfig"; sourceTree = "<group>"; };
 		EBAE706C2CFBE66E9C610869 /* libPods-BantayCiudad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BantayCiudad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F948719D1A32FA5A00BBBADD /* BantayCiudad-Header.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BantayCiudad-Header.pch"; sourceTree = "<group>"; };
@@ -148,6 +156,7 @@
 			children = (
 				F9BFCBDD1A33367800912C46 /* Alert.h */,
 				F9BFCBDE1A33367800912C46 /* Alert.m */,
+				7F65F1B51A3368E7000ED52D /* BantayCiudad.xcdatamodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +289,8 @@
 				F9BFCBFE1A33384100912C46 /* RESTResponse.m */,
 				F9BFCBE61A33370400912C46 /* Alert+REST.h */,
 				F9BFCBE71A33370400912C46 /* Alert+REST.m */,
+				7F65F1AC1A335E72000ED52D /* GeoNamesResponse.h */,
+				7F65F1AD1A335E72000ED52D /* GeoNamesResponse.m */,
 			);
 			name = Response;
 			sourceTree = "<group>";
@@ -293,6 +304,8 @@
 				F9BFCBFB1A33383600912C46 /* RESTRequest.m */,
 				F9BFCBE31A3336DC00912C46 /* UserRequest.h */,
 				F9BFCBE41A3336DC00912C46 /* UserRequest.m */,
+				7F65F1AF1A336105000ED52D /* GeoNamesRequest.h */,
+				7F65F1B01A336105000ED52D /* GeoNamesRequest.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -467,6 +480,9 @@
 			files = (
 				F9BFCBE81A33370400912C46 /* Alert+REST.m in Sources */,
 				F9BFCBEF1A3337E300912C46 /* AppDelegate+Additions.m in Sources */,
+				7F65F1AE1A335E72000ED52D /* GeoNamesResponse.m in Sources */,
+				F9BFCBEF1A3337E300912C46 /* AppDelegate+Additions.m in Sources */,
+				7F65F1B11A336105000ED52D /* GeoNamesRequest.m in Sources */,
 				F9BFCBFC1A33383600912C46 /* RESTRequest.m in Sources */,
 				F9BFCC021A33384D00912C46 /* AppConfiguration.m in Sources */,
 				F9BFCBE51A3336DC00912C46 /* UserRequest.m in Sources */,
@@ -478,6 +494,7 @@
 				7F65F19B1A330B90000ED52D /* README.md in Sources */,
 				F9BFCC0A1A33392300912C46 /* ClientAccessConstants.m in Sources */,
 				382387B31A32F98500A734CD /* DetailViewController.m in Sources */,
+				7F65F1B61A3368E7000ED52D /* BantayCiudad.xcdatamodel in Sources */,
 				7F65F19C1A330B90000ED52D /* SLParallaxController.m in Sources */,
 				7F65F1AB1A331061000ED52D /* MainViewController.m in Sources */,
 				382387AD1A32F2F000A734CD /* AppDelegate.m in Sources */,

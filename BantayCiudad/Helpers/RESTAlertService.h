@@ -9,6 +9,7 @@
 #import "RESTServiceSupport.h"
 #import "AlertService.h"
 #import "AlertsRequest.h"
+#import "GeoNamesRequest.h"
 
 @interface RESTAlertService : RESTServiceSupport<AlertService>
 
