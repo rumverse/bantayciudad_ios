@@ -10,6 +10,5 @@
 
 @interface PostAlertViewController : UIViewController
 
-
 @end
 

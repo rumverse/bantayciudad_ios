@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uV0-9B-vbV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="l8G-f8-rxx">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -42,25 +42,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1DL-HT-wWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-15" y="-194"/>
-        </scene>
-        <!--Post Alert View Controller-->
-        <scene sceneID="Ubi-NH-7mY">
-            <objects>
-                <viewController id="ro8-uW-mDV" customClass="PostAlertViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="B6R-5s-9Mz"/>
-                        <viewControllerLayoutGuide type="bottom" id="gO1-Yf-tAR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="FJn-TB-NB3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D5k-kN-QqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="443" y="-194"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="74K-QN-lbn">
@@ -183,6 +164,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltk-Wc-btl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="814" y="-194"/>
+        </scene>
+        <!--Post Alert View Controller-->
+        <scene sceneID="FMm-WO-yAj">
+            <objects>
+                <viewController modalTransitionStyle="partialCurl" hidesBottomBarWhenPushed="YES" id="l8G-f8-rxx" userLabel="Post Alert View Controller" customClass="PostAlertViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c2M-Ch-Zt3"/>
+                        <viewControllerLayoutGuide type="bottom" id="yvM-gA-85T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rif-B7-Ssb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jz8-01-b8B">
+                                <rect key="frame" x="16" y="48" width="288" height="29"/>
+                                <segments>
+                                    <segment title="Info"/>
+                                    <segment title="Warning"/>
+                                    <segment title="Emergency"/>
+                                </segments>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McE-zn-qDv">
+                                <rect key="frame" x="10" y="95" width="300" height="204"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udL-El-PjY">
+                                <rect key="frame" x="15" y="378" width="119" height="49"/>
+                                <color key="backgroundColor" red="0.65346686180000002" green="1" blue="0.68210874840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" red="0.85501747949999996" green="0.40546746030000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sf6-bC-LPC">
+                                <rect key="frame" x="15" y="315" width="294" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Uw-eQ-Lyn">
+                                <rect key="frame" x="191" y="378" width="119" height="49"/>
+                                <color key="backgroundColor" red="0.65346686180000002" green="1" blue="0.68210874840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Attach Puto">
+                                    <color key="titleColor" red="0.85501747949999996" green="0.40546746030000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="alertTypeControl" destination="jz8-01-b8B" id="2gH-iS-cny"/>
+                        <outlet property="descriptionTextView" destination="McE-zn-qDv" id="63C-Qd-bSM"/>
+                        <outlet property="locationTextField" destination="sf6-bC-LPC" id="BhU-4K-5f8"/>
+                        <outlet property="sendButton" destination="udL-El-PjY" id="t9I-XY-2Qp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EnQ-br-9b7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="363" y="-194"/>
         </scene>
     </scenes>
     <resources>
