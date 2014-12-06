@@ -14,7 +14,9 @@
 + (RKMapping *)responseMappingForResult:(NSString *)keyPath mapping:(RKMapping *)resultMapping {
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[self class]];
     [mapping addAttributeMappingsFromDictionary:@{@"status":@"status",
-                                                  @"error":@"error"}];
+                                                  @"error":@"error",
+                                                  @"result.alertid":@"alertID",
+                                                  @"result":@"isSuccess"}];
     if ( resultMapping != nil ) {
         [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:keyPath
                                                                                 toKeyPath:@"result"

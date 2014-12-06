@@ -20,7 +20,16 @@
 
 - (void)handleStandardGETObject:(id)object path:(NSString *)path parameters:(NSDictionary *)parameters authRequired:(const BOOL)authRequired finished:(void (^)(id, NSError *))callback;
 
+- (void)handleStandardGETObject:(id)object forEntity:(const BOOL)asEntity path:(NSString *)path parameters:(NSDictionary *)parameters authRequired:(const BOOL)authRequired finished:(void (^)(id, NSError *))callback;
+
 - (void)handleStandardPOSTObject:(id)object path:(NSString *)path parameters:(NSDictionary *)parameters authRequired:(const BOOL)authRequired
+                        finished:( void (^)(id result, NSError *error) )callback;
+
+- (void)handleStandardPOSTObject:(id)object
+                       forEntity:(const BOOL)asEntity
+                            path:(NSString *)path
+                      parameters:(NSDictionary *)parameters
+                    authRequired:(const BOOL)authRequired
                         finished:( void (^)(id result, NSError *error) )callback;
 
 @end

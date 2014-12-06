@@ -11,5 +11,7 @@
 
 - (void)getAlertWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
 
+- (void)sendAlertWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
+
 
 @end

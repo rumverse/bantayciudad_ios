@@ -33,9 +33,10 @@ typedef NS_ENUM(NSInteger, AlertType) {
 @interface AlertsRequest : RESTRequest
 
 @property (nonatomic, strong) NSString *alertDescription;
-@property (nonatomic, strong) NSNumber *latitude;
-@property (nonatomic, strong) NSNumber *longitude;
-@property (nonatomic, strong) NSNumber *userID;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, assign) double latitude;
+@property (nonatomic, assign) double longitude;
+@property (nonatomic, assign) NSInteger userID;
 @property (nonatomic, assign) Severity severityType;
 @property (nonatomic, assign) UserType userType;
 @property (nonatomic, assign) AlertType alertType;

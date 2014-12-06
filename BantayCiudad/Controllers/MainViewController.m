@@ -82,11 +82,31 @@
     
     id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
     
-    AlertsRequest *request = [AlertsRequest new];
-    request.zipCode = 1228;
+
     
-    [service getAlertWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
+    [service getAlertWithRequest:[AlertsRequest new] withCompletion:^(RESTResponse *response, NSError *error) {
         NSLog(@"Println: %@",response.result);
+    }];
+    
+    
+    AlertsRequest *request = [AlertsRequest new];
+    request.zipCode = 1605;
+    request.latitude = 121.65;
+    request.longitude = 54.1212;
+    request.alertDescription = @"Traffic Accident with Bus and Jeepney";
+    request.severityType = Warning;
+    request.userType = Authority;
+    request.alertType = Traffic;
+    request.userName = @"mylene@onvolo.com";
+    request.userID = 2;
+    
+    [service sendAlertWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
+        if (!response.error.isEmpty) {
+            NSLog(@"Alert ID:%li",response.alertID);
+        }
+        else{
+            NSLog(@"Error: %@",error.localizedDescription);
+        }
     }];
 }
 
