@@ -15,14 +15,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dKB-yZ-c3Y">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dKB-yZ-c3Y" customClass="CircularImageView">
                         <rect key="frame" x="10" y="10" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="NE3-tO-2uM"/>
                             <constraint firstAttribute="height" constant="50" id="sIu-Nc-kBX"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CLt-n3-blE">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CLt-n3-blE" customClass="CircularImageView">
                         <rect key="frame" x="280" y="20" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="2i2-0L-Wm3"/>

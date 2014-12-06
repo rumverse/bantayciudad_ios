@@ -10,6 +10,8 @@
 		382387AA1A32F28300A734CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387A71A32F28300A734CD /* ViewController.m */; };
 		382387AD1A32F2F000A734CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387AC1A32F2F000A734CD /* AppDelegate.m */; };
 		382387B31A32F98500A734CD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387B11A32F98500A734CD /* DetailViewController.m */; };
+		382387C51A33761E00A734CD /* CircularImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387C41A33761E00A734CD /* CircularImageView.m */; };
+		382387C81A33795900A734CD /* PostAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387C71A33795900A734CD /* PostAlertViewController.m */; };
 		7F1349671A32DB01001AC194 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1349661A32DB01001AC194 /* main.m */; };
 		7F1349751A32DB01001AC194 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F1349741A32DB01001AC194 /* Images.xcassets */; };
 		7F1349841A32DB02001AC194 /* BantayCiudadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1349831A32DB02001AC194 /* BantayCiudadTests.m */; };
@@ -58,6 +60,10 @@
 		382387AC1A32F2F000A734CD /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		382387B11A32F98500A734CD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		382387B21A32F98500A734CD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		382387C31A33761E00A734CD /* CircularImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularImageView.h; sourceTree = "<group>"; };
+		382387C41A33761E00A734CD /* CircularImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularImageView.m; sourceTree = "<group>"; };
+		382387C61A33795900A734CD /* PostAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostAlertViewController.h; sourceTree = "<group>"; };
+		382387C71A33795900A734CD /* PostAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostAlertViewController.m; sourceTree = "<group>"; };
 		57DCA653D4C4AA15B2870BC8 /* Pods-BantayCiudad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BantayCiudad.release.xcconfig"; path = "Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad.release.xcconfig"; sourceTree = "<group>"; };
 		7F1349611A32DB01001AC194 /* BantayCiudad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BantayCiudad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1349651A32DB01001AC194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,6 +153,8 @@
 		382387A51A32F28300A734CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				382387C61A33795900A734CD /* PostAlertViewController.h */,
+				382387C71A33795900A734CD /* PostAlertViewController.m */,
 				382387AB1A32F2F000A734CD /* AppDelegate.h */,
 				382387AC1A32F2F000A734CD /* AppDelegate.m */,
 				382387A61A32F28300A734CD /* ViewController.h */,
@@ -179,6 +187,15 @@
 				F9BFC4DB1A336C9E008AE740 /* FeedCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		382387C21A33761E00A734CD /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				382387C31A33761E00A734CD /* CircularImageView.h */,
+				382387C41A33761E00A734CD /* CircularImageView.m */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		7F1349581A32DB01001AC194 = {
@@ -244,6 +261,7 @@
 		7F65F1931A330B12000ED52D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				382387C21A33761E00A734CD /* Custom Views */,
 				F9BFCC001A33384D00912C46 /* AppConfiguration.h */,
 				F9BFCC011A33384D00912C46 /* AppConfiguration.m */,
 				F9BFCBEC1A3337C000912C46 /* Categories */,
@@ -500,12 +518,14 @@
 				F9BFCBFC1A33383600912C46 /* RESTRequest.m in Sources */,
 				F9BFC4DC1A336C9E008AE740 /* FeedCell.m in Sources */,
 				F9BFCC021A33384D00912C46 /* AppConfiguration.m in Sources */,
+				382387C81A33795900A734CD /* PostAlertViewController.m in Sources */,
 				F9BFCBE51A3336DC00912C46 /* UserRequest.m in Sources */,
 				F9BFC4E01A337075008AE740 /* UIImageView+UIActivityIndicator.m in Sources */,
 				F9BFCBF81A33380E00912C46 /* RESTServiceSupport.m in Sources */,
 				F9BFCBDF1A33367800912C46 /* Alert.m in Sources */,
 				F9BFCBF91A33380E00912C46 /* RKObjectManager+App.m in Sources */,
 				F9BFCBEB1A33373A00912C46 /* RESTAlertService.m in Sources */,
+				382387C51A33761E00A734CD /* CircularImageView.m in Sources */,
 				F9BFCC071A33390600912C46 /* AlertsRequest.m in Sources */,
 				7F65F19B1A330B90000ED52D /* README.md in Sources */,
 				F9BFCC0A1A33392300912C46 /* ClientAccessConstants.m in Sources */,

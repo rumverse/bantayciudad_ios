@@ -11,6 +11,7 @@
 
 #import "AppConfiguration.h"
 #import <MagicalRecord/MagicalRecord.h>
+#import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 
 @interface AppDelegate ()
 
@@ -21,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // enable global network activity indicator
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     AppConfiguration *config = [AppConfiguration sharedConfiguration];
     self.managedObjectStore = [config setupCoreDataStack];
     self.mainObjectManager = [config setMainObjectManager];
