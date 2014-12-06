@@ -10,11 +10,17 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 #import "RESTAlertService.h"
+#import "FeedCell.h"
+
+#import "Alert.h"
+
+#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
-#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 40
+#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 100
 #define DEFAULT_HEIGHT_HEADER                200.0f
 #define MIN_HEIGHT_HEADER                    10.0f
 #define DEFAULT_Y_OFFSET                     ([[UIScreen mainScreen] bounds].size.height == 480.0f) ? -200.0f : -250.0f
@@ -52,6 +58,9 @@
 @property (nonatomic) BOOL displayMap;
 @property (nonatomic) float heightMap;
 
+
+@property (nonatomic, strong) NSArray *alert;
+
 @end
 
 @implementation MainViewController
@@ -71,6 +80,9 @@
     self.tblMain = [[UITableView alloc]  initWithFrame: CGRectMake(0, 20, SCREEN_WIDTH, self.heighTableView)];
     self.tblMain.tableHeaderView  = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, self.heighTableViewHeader)];
     [self.tblMain setBackgroundColor:[UIColor clearColor]];
+    [self.tblMain registerNib:[FeedCell nib] forCellReuseIdentifier:[FeedCell reuseIdentifier]];
+    self.tblMain.estimatedRowHeight = 75.0;
+    self.tblMain.rowHeight = UITableViewAutomaticDimension;
     
     // Add gesture to gestures
     self.tapMapViewGesture  = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -109,13 +121,16 @@
     request.userID = 2;
     
     [service sendAlertWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
-        if (!response.error.isEmpty) {
-            NSLog(@"Alert ID:%li",response.alertID);
+        if (response.alertID) {
+            NSLog(@"Alert ID: %@",response.alertID);
         }
         else{
             NSLog(@"Error: %@",error.localizedDescription);
         }
     }];
+    
+    self.alert = [Alert MR_findAll];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -271,38 +286,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return _alert.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    static NSString *identifier;
-    if(indexPath.row == 0){
-        identifier = @"firstCell";
-        // Add some shadow to the first cell
-        cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if(!cell){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:identifier];
-            
-            CGRect cellBounds       = cell.layer.bounds;
-            CGRect shadowFrame      = CGRectMake(cellBounds.origin.x, cellBounds.origin.y, tableView.frame.size.width, 10.0);
-            CGPathRef shadowPath    = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
-            cell.layer.shadowPath   = shadowPath;
-            [cell.layer setShadowOffset:CGSizeMake(-2, -2)];
-            [cell.layer setShadowColor:[[UIColor grayColor] CGColor]];
-            [cell.layer setShadowOpacity:.75];
-        }
-    }
-    else{
-        identifier = @"otherCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if(!cell)
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:identifier];
-    }
-    [[cell textLabel] setText:@"Hello World !"];
+    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:[FeedCell reuseIdentifier]];
+    [cell cellForAlert:(Alert *)_alert[indexPath.row] forRowAtIndexPath:indexPath];
     return cell;
 }
 
@@ -349,5 +339,12 @@
                                                            bearing:BEARING viewingAngle:VIEWANGLE];
     [self.mapView animateToCameraPosition:cam];
 }
+
+
+- (NSArray *)alertForPredicate:(NSPredicate *)predicate{
+    return [Alert MR_findAllSortedBy:@"dateCreated" ascending:YES withPredicate:predicate];
+}
+
+
 
 @end
