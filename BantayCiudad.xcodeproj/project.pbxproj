@@ -12,7 +12,6 @@
 		382387B31A32F98500A734CD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387B11A32F98500A734CD /* DetailViewController.m */; };
 		382387C51A33761E00A734CD /* CircularImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387C41A33761E00A734CD /* CircularImageView.m */; };
 		382387C81A33795900A734CD /* PostAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387C71A33795900A734CD /* PostAlertViewController.m */; };
-		382387D21A33C16B00A734CD /* TRAutocompleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387D11A33C16B00A734CD /* TRAutocompleteView.m */; };
 		7F1349671A32DB01001AC194 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1349661A32DB01001AC194 /* main.m */; };
 		7F1349751A32DB01001AC194 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F1349741A32DB01001AC194 /* Images.xcassets */; };
 		7F1349841A32DB02001AC194 /* BantayCiudadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1349831A32DB02001AC194 /* BantayCiudadTests.m */; };
@@ -26,6 +25,9 @@
 		7F65F1B11A336105000ED52D /* GeoNamesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1B01A336105000ED52D /* GeoNamesRequest.m */; };
 		7F65F1B61A3368E7000ED52D /* BantayCiudad.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1B51A3368E7000ED52D /* BantayCiudad.xcdatamodel */; };
 		F9BE0604AFA5FE20A0CA29BA /* libPods-BantayCiudad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBAE706C2CFBE66E9C610869 /* libPods-BantayCiudad.a */; };
+		F9BFC4DC1A336C9E008AE740 /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFC4DA1A336C9E008AE740 /* FeedCell.m */; };
+		F9BFC4DD1A336C9E008AE740 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BFC4DB1A336C9E008AE740 /* FeedCell.xib */; };
+		F9BFC4E01A337075008AE740 /* UIImageView+UIActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFC4DF1A337075008AE740 /* UIImageView+UIActivityIndicator.m */; };
 		F9BFCBDF1A33367800912C46 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFCBDE1A33367800912C46 /* Alert.m */; };
 		F9BFCBE51A3336DC00912C46 /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFCBE41A3336DC00912C46 /* UserRequest.m */; };
 		F9BFCBE81A33370400912C46 /* Alert+REST.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFCBE71A33370400912C46 /* Alert+REST.m */; };
@@ -62,8 +64,6 @@
 		382387C41A33761E00A734CD /* CircularImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularImageView.m; sourceTree = "<group>"; };
 		382387C61A33795900A734CD /* PostAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostAlertViewController.h; sourceTree = "<group>"; };
 		382387C71A33795900A734CD /* PostAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostAlertViewController.m; sourceTree = "<group>"; };
-		382387D01A33C16B00A734CD /* TRAutocompleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAutocompleteView.h; sourceTree = "<group>"; };
-		382387D11A33C16B00A734CD /* TRAutocompleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAutocompleteView.m; sourceTree = "<group>"; };
 		57DCA653D4C4AA15B2870BC8 /* Pods-BantayCiudad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BantayCiudad.release.xcconfig"; path = "Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad.release.xcconfig"; sourceTree = "<group>"; };
 		7F1349611A32DB01001AC194 /* BantayCiudad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BantayCiudad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1349651A32DB01001AC194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +88,11 @@
 		9475BB2F7F689FFB8F34CD71 /* Pods-BantayCiudad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BantayCiudad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad.debug.xcconfig"; sourceTree = "<group>"; };
 		EBAE706C2CFBE66E9C610869 /* libPods-BantayCiudad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BantayCiudad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F948719D1A32FA5A00BBBADD /* BantayCiudad-Header.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BantayCiudad-Header.pch"; sourceTree = "<group>"; };
+		F9BFC4D91A336C9E008AE740 /* FeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCell.h; sourceTree = SOURCE_ROOT; };
+		F9BFC4DA1A336C9E008AE740 /* FeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell.m; sourceTree = SOURCE_ROOT; };
+		F9BFC4DB1A336C9E008AE740 /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = SOURCE_ROOT; };
+		F9BFC4DE1A337075008AE740 /* UIImageView+UIActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+UIActivityIndicator.h"; sourceTree = "<group>"; };
+		F9BFC4DF1A337075008AE740 /* UIImageView+UIActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+UIActivityIndicator.m"; sourceTree = "<group>"; };
 		F9BFCBDD1A33367800912C46 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alert.h; path = BantayCiudad/Alert.h; sourceTree = SOURCE_ROOT; };
 		F9BFCBDE1A33367800912C46 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alert.m; path = BantayCiudad/Alert.m; sourceTree = SOURCE_ROOT; };
 		F9BFCBE31A3336DC00912C46 /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
@@ -151,8 +156,8 @@
 				382387AC1A32F2F000A734CD /* AppDelegate.m */,
 				382387A61A32F28300A734CD /* ViewController.h */,
 				382387A71A32F28300A734CD /* ViewController.m */,
-				382387B11A32F98500A734CD /* DetailViewController.m */,
 				382387B21A32F98500A734CD /* DetailViewController.h */,
+				382387B11A32F98500A734CD /* DetailViewController.m */,
 				7F65F1A91A331061000ED52D /* MainViewController.h */,
 				7F65F1AA1A331061000ED52D /* MainViewController.m */,
 				382387C61A33795900A734CD /* PostAlertViewController.h */,
@@ -176,6 +181,9 @@
 			children = (
 				7F65F1A31A330C34000ED52D /* LaunchScreen.xib */,
 				7F65F1A51A330C34000ED52D /* Main.storyboard */,
+				F9BFC4D91A336C9E008AE740 /* FeedCell.h */,
+				F9BFC4DA1A336C9E008AE740 /* FeedCell.m */,
+				F9BFC4DB1A336C9E008AE740 /* FeedCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,15 +195,6 @@
 				382387C41A33761E00A734CD /* CircularImageView.m */,
 			);
 			path = "Custom Views";
-			sourceTree = "<group>";
-		};
-		382387CF1A33C16A00A734CD /* TRAutocompleteView */ = {
-			isa = PBXGroup;
-			children = (
-				382387D01A33C16B00A734CD /* TRAutocompleteView.h */,
-				382387D11A33C16B00A734CD /* TRAutocompleteView.m */,
-			);
-			path = TRAutocompleteView;
 			sourceTree = "<group>";
 		};
 		7F1349581A32DB01001AC194 = {
@@ -261,7 +260,6 @@
 		7F65F1931A330B12000ED52D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				382387CF1A33C16A00A734CD /* TRAutocompleteView */,
 				382387C21A33761E00A734CD /* Custom Views */,
 				F9BFCC001A33384D00912C46 /* AppConfiguration.h */,
 				F9BFCC011A33384D00912C46 /* AppConfiguration.m */,
@@ -344,6 +342,8 @@
 		F9BFCBEC1A3337C000912C46 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				F9BFC4DE1A337075008AE740 /* UIImageView+UIActivityIndicator.h */,
+				F9BFC4DF1A337075008AE740 /* UIImageView+UIActivityIndicator.m */,
 				F9BFCBF01A3337ED00912C46 /* NSString+Additions.h */,
 				F9BFCBF11A3337ED00912C46 /* NSString+Additions.m */,
 				F9BFCBED1A3337E300912C46 /* AppDelegate+Additions.h */,
@@ -459,6 +459,7 @@
 				7F65F1A71A330C34000ED52D /* LaunchScreen.xib in Resources */,
 				7F1349751A32DB01001AC194 /* Images.xcassets in Resources */,
 				7F65F1A81A330C34000ED52D /* Main.storyboard in Resources */,
+				F9BFC4DD1A336C9E008AE740 /* FeedCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,9 +516,11 @@
 				F9BFCBEF1A3337E300912C46 /* AppDelegate+Additions.m in Sources */,
 				7F65F1B11A336105000ED52D /* GeoNamesRequest.m in Sources */,
 				F9BFCBFC1A33383600912C46 /* RESTRequest.m in Sources */,
+				F9BFC4DC1A336C9E008AE740 /* FeedCell.m in Sources */,
 				F9BFCC021A33384D00912C46 /* AppConfiguration.m in Sources */,
 				382387C81A33795900A734CD /* PostAlertViewController.m in Sources */,
 				F9BFCBE51A3336DC00912C46 /* UserRequest.m in Sources */,
+				F9BFC4E01A337075008AE740 /* UIImageView+UIActivityIndicator.m in Sources */,
 				F9BFCBF81A33380E00912C46 /* RESTServiceSupport.m in Sources */,
 				F9BFCBDF1A33367800912C46 /* Alert.m in Sources */,
 				F9BFCBF91A33380E00912C46 /* RKObjectManager+App.m in Sources */,
@@ -525,7 +528,6 @@
 				382387C51A33761E00A734CD /* CircularImageView.m in Sources */,
 				F9BFCC071A33390600912C46 /* AlertsRequest.m in Sources */,
 				7F65F19B1A330B90000ED52D /* README.md in Sources */,
-				382387D21A33C16B00A734CD /* TRAutocompleteView.m in Sources */,
 				F9BFCC0A1A33392300912C46 /* ClientAccessConstants.m in Sources */,
 				382387B31A32F98500A734CD /* DetailViewController.m in Sources */,
 				7F65F1B61A3368E7000ED52D /* BantayCiudad.xcdatamodel in Sources */,

@@ -8,13 +8,19 @@
 
 #import "MainViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
-
+#import <AFNetworking/AFJSONRequestOperation.h>
 #import "RESTAlertService.h"
+#import "FeedCell.h"
+
+#import "Alert.h"
+
+#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
-#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 40
+#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 164
 #define DEFAULT_HEIGHT_HEADER                200.0f
 #define MIN_HEIGHT_HEADER                    10.0f
 #define DEFAULT_Y_OFFSET                     ([[UIScreen mainScreen] bounds].size.height == 480.0f) ? -200.0f : -250.0f
@@ -26,7 +32,8 @@
 #define BEARING 30
 #define ZOOM 15.5
 #define VIEWANGLE 45
-
+//#define DISTANCE 1609.34
+#define DISTANCE 5
 @interface MainViewController ()<UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, GMSMapViewDelegate>
 
 @property (strong, nonatomic) UITableView *tblMain;
@@ -46,11 +53,17 @@
 @property (strong, nonatomic) UITapGestureRecognizer  *tapMapViewGesture;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapTableViewGesture;
 @property  (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *firstLocation;
 @property (nonatomic) CGRect headerFrame;
 @property (nonatomic) float headerYOffSet;
 @property (nonatomic) BOOL isShutterOpen;
 @property (nonatomic) BOOL displayMap;
 @property (nonatomic) float heightMap;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addAlert;
+@property (nonatomic, strong) UISegmentedControl *segControl;
+
+@property (nonatomic, strong) NSArray *alert;
 
 @end
 
@@ -67,10 +80,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     
     self.tblMain = [[UITableView alloc]  initWithFrame: CGRectMake(0, 20, SCREEN_WIDTH, self.heighTableView)];
     self.tblMain.tableHeaderView  = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, self.heighTableViewHeader)];
     [self.tblMain setBackgroundColor:[UIColor clearColor]];
+    [self.tblMain registerNib:[FeedCell nib] forCellReuseIdentifier:[FeedCell reuseIdentifier]];
+    self.tblMain.estimatedRowHeight = 75.0;
+    self.tblMain.rowHeight = UITableViewAutomaticDimension;
     
     // Add gesture to gestures
     self.tapMapViewGesture  = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -90,12 +107,6 @@
     
     id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
     
-
-    
-    [service getAlertWithRequest:[AlertsRequest new] withCompletion:^(RESTResponse *response, NSError *error) {
-        NSLog(@"Println: %@",response.result);
-    }];
-    
     
     AlertsRequest *request = [AlertsRequest new];
     request.zipCode = 1605;
@@ -109,13 +120,16 @@
     request.userID = 2;
     
     [service sendAlertWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
-        if (!response.error.isEmpty) {
-            NSLog(@"Alert ID:%li",response.alertID);
+        if (response.alertID) {
+            NSLog(@"Alert ID: %@",response.alertID);
         }
         else{
             NSLog(@"Error: %@",error.localizedDescription);
         }
     }];
+    
+    self.alert = [Alert MR_findAll];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -170,6 +184,11 @@
     self.mapView.delegate = self;
     [self.view insertSubview:self.mapView
                 belowSubview: self.tblMain];
+    
+    self.segControl = [[UISegmentedControl alloc]initWithFrame:CGRectMake(0.0, 64.0, SCREEN_WIDTH,50.0)];
+    [self.tblMain insertSubview:self.segControl aboveSubview:self.mapView];
+    
+    
 }
 
 #pragma mark - Internal Methods
@@ -237,7 +256,7 @@
     [self.mapView animateToCameraPosition:cam];
 }
 
-#pragma mark - Table view Delegate
+#pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat scrollOffset        = scrollView.contentOffset.y;
@@ -271,38 +290,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return _alert.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    static NSString *identifier;
-    if(indexPath.row == 0){
-        identifier = @"firstCell";
-        // Add some shadow to the first cell
-        cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if(!cell){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:identifier];
-            
-            CGRect cellBounds       = cell.layer.bounds;
-            CGRect shadowFrame      = CGRectMake(cellBounds.origin.x, cellBounds.origin.y, tableView.frame.size.width, 10.0);
-            CGPathRef shadowPath    = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
-            cell.layer.shadowPath   = shadowPath;
-            [cell.layer setShadowOffset:CGSizeMake(-2, -2)];
-            [cell.layer setShadowColor:[[UIColor grayColor] CGColor]];
-            [cell.layer setShadowOpacity:.75];
-        }
-    }
-    else{
-        identifier = @"otherCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if(!cell)
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:identifier];
-    }
-    [[cell textLabel] setText:@"Hello World !"];
+    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:[FeedCell reuseIdentifier]];
+    [cell cellForAlert:(Alert *)_alert[indexPath.row] forRowAtIndexPath:indexPath];
     return cell;
 }
 
@@ -327,6 +321,11 @@
     }
 }
 
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"DetailViewControllerSegue" sender:self];
+}
+
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if (gestureRecognizer == self.tapTableViewGesture) {
@@ -342,12 +341,65 @@
                         change:(NSDictionary *)change
                        context:(void *)context {
     CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+    
+    CLLocation *locA = [[CLLocation alloc] initWithLatitude:self.firstLocation.coordinate.latitude longitude:self.firstLocation.coordinate.longitude];
+    
+    CLLocation *locB = [[CLLocation alloc] initWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
+    
+    CLLocationDistance distance = [locA distanceFromLocation:locB];
+    
+    if(distance >= DISTANCE || !self.firstLocation)
+    {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.geonames.org/findNearbyPostalCodesJSON?lat=%f&lng=%f&username=bugmenotuser", self.mapView.myLocation.coordinate.latitude, self.mapView.myLocation.coordinate.longitude]];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            NSLog(@"Geo Shit = %@", JSON);
+            
+            NSDictionary *dic = (NSDictionary *) JSON;
+            if(dic != (NSDictionary *)[NSNull null])
+            {
+                if([dic objectForKey:@"postalCodes"] != [NSNull null])
+                {
+                    NSArray *zipCodeArray = [dic objectForKey:@"postalCodes"];
+                    
+                    NSDictionary *firstData = [zipCodeArray objectAtIndex:1];
+                    
+                    id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
+                    
+                    AlertsRequest *request = [AlertsRequest new];
+                    NSString *zip = (NSString *)[firstData objectForKey:@"postalCode"];
+                    request.zipCode = [zip integerValue];
+                    request.zipCode = 1605;
+                    
+                    [service getAlertsWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
+                        NSLog(@"Println: %@",response.result);
+                        
+                        //TODO: Parse data
+                    }];
+                    
+                }
+            }
 
-    GMSCameraPosition *cam = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
-                                                         longitude:location.coordinate.longitude
-                                                              zoom:ZOOM
-                                                           bearing:BEARING viewingAngle:VIEWANGLE];
-    [self.mapView animateToCameraPosition:cam];
+        } failure:nil];
+        [operation start];
+        
+        GMSCameraPosition *cam = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
+                                                             longitude:location.coordinate.longitude
+                                                                  zoom:ZOOM
+                                                               bearing:BEARING viewingAngle:VIEWANGLE];
+        [self.mapView animateToCameraPosition:cam];
+        
+        self.firstLocation = location;
+    }
+
+    if(!self.firstLocation)
+        self.firstLocation = location;
+    
+}
+
+
+- (NSArray *)alertForPredicate:(NSPredicate *)predicate{
+    return [Alert MR_findAllSortedBy:@"dateCreated" ascending:YES withPredicate:predicate];
 }
 
 @end

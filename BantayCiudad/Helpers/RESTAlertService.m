@@ -13,8 +13,9 @@
 #import "Alert+REST.h"
 
 
-static NSString *const kEndpointGetAlert = @"/alerts/feeds";
+static NSString *const kEndpointGetAlerts = @"/alerts/feeds";
 static NSString *const kEndpointSendAlert = @"/alerts";
+static NSString *const kEndpointGetAlertDetail = @"/getalert";
 
 @implementation RESTAlertService
 
@@ -29,15 +30,20 @@ static NSString *const kEndpointSendAlert = @"/alerts";
                                                                         rootKeyPath:nil
                                                                              method:RKRequestMethodAny]];
     
-    [manager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:[GeoNamesRequest requestMapping] objectClass:[GeoNamesRequest class] rootKeyPath:nil method:RKRequestMethodGET]];
-    
     /**
      *  Response Descriptor
      */
     
     [manager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:[RESTResponse responseMappingForResult:@"result" mapping:[Alert objectMappingForStore:manager.managedObjectStore]]
                                                                                 method:RKRequestMethodGET
-                                                                           pathPattern:kEndpointGetAlert
+                                                                           pathPattern:kEndpointGetAlerts
+                                                                               keyPath:nil
+                                                                           statusCodes:okStatusCodes]];
+    
+    
+    [manager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:[RESTResponse responseMappingForResult:@"result" mapping:[Alert objectMappingForStore:manager.managedObjectStore]]
+                                                                                method:RKRequestMethodGET
+                                                                           pathPattern:kEndpointGetAlertDetail
                                                                                keyPath:nil
                                                                            statusCodes:okStatusCodes]];
     
@@ -49,8 +55,8 @@ static NSString *const kEndpointSendAlert = @"/alerts";
 
 }
 
-- (void)getAlertWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *, NSError *))completion{
-    [self handleStandardGETObject:request forEntity:YES path:kEndpointGetAlert parameters:nil authRequired:NO finished:^(id result, NSError *error) {
+- (void)getAlertsWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *, NSError *))completion{
+    [self handleStandardGETObject:request forEntity:YES path:kEndpointGetAlerts parameters:nil authRequired:NO finished:^(id result, NSError *error) {
         RESTResponse *response = (RESTResponse *)result;
         completion(response, completion);
     }];
@@ -58,6 +64,13 @@ static NSString *const kEndpointSendAlert = @"/alerts";
 
 - (void)sendAlertWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *, NSError *))completion{
     [self handleStandardPOSTObject:request path:kEndpointSendAlert parameters:nil authRequired:NO finished:^(id result, NSError *error) {
+        RESTResponse *response = (RESTResponse *)result;
+        completion(response, error);
+    }];
+}
+
+- (void)getAlertDetailForID:(NSString *)alertID withCompletion:(void (^)(RESTResponse *, NSError *))completion{
+    [self handleStandardGETObject:nil forEntity:YES path:kEndpointGetAlertDetail parameters:@{@"id":alertID} authRequired:NO finished:^(id result, NSError *error) {
         RESTResponse *response = (RESTResponse *)result;
         completion(response, error);
     }];

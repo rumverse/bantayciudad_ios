@@ -10,8 +10,9 @@
 
 @interface NSString (Additions)
 
-- (NSURL *)urlValue;
+- (NSString *)MD5String;
 
+- (NSURL *)urlValue;
 
 - (BOOL)isEmpty;
 

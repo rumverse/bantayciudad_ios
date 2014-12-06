@@ -8,13 +8,10 @@
 
 #import "PostAlertViewController.h"
 #import "RESTAlertService.h"
-#import "TRAutocompleteView.h"
 
 @interface PostAlertViewController () <UITextViewDelegate>
 {
-    AlertsRequest *request;
-    TRAutocompleteView *_autocompleteView;
-    
+    AlertsRequest *request; 
 }
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *alertTypeControl;
