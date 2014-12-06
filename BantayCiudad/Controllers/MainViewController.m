@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
-
+#import <AFNetworking/AFJSONRequestOperation.h>
 #import "RESTAlertService.h"
 
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
@@ -26,7 +26,8 @@
 #define BEARING 30
 #define ZOOM 15.5
 #define VIEWANGLE 45
-
+//#define DISTANCE 1609.34
+#define DISTANCE 5
 @interface MainViewController ()<UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, GMSMapViewDelegate>
 
 @property (strong, nonatomic) UITableView *tblMain;
@@ -46,6 +47,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer  *tapMapViewGesture;
 @property (strong, nonatomic) UITapGestureRecognizer  *tapTableViewGesture;
 @property  (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *firstLocation;
 @property (nonatomic) CGRect headerFrame;
 @property (nonatomic) float headerYOffSet;
 @property (nonatomic) BOOL isShutterOpen;
@@ -87,15 +89,6 @@
     [self.view addSubview:self.tblMain];
     
     [self setupMapView];
-    
-    id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
-    
-    AlertsRequest *request = [AlertsRequest new];
-    request.zipCode = 1228;
-    
-    [service getAlertWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
-        NSLog(@"Println: %@",response.result);
-    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -322,12 +315,59 @@
                         change:(NSDictionary *)change
                        context:(void *)context {
     CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+    
+    CLLocation *locA = [[CLLocation alloc] initWithLatitude:self.firstLocation.coordinate.latitude longitude:self.firstLocation.coordinate.longitude];
+    
+    CLLocation *locB = [[CLLocation alloc] initWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
+    
+    CLLocationDistance distance = [locA distanceFromLocation:locB];
+    
+    if(distance >= DISTANCE || !self.firstLocation)
+    {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.geonames.org/findNearbyPostalCodesJSON?lat=%f&lng=%f&username=bugmenotuser", self.mapView.myLocation.coordinate.latitude, self.mapView.myLocation.coordinate.longitude]];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            NSLog(@"Geo Shit = %@", JSON);
+            
+            NSDictionary *dic = (NSDictionary *) JSON;
+            if(dic != (NSDictionary *)[NSNull null])
+            {
+                if([dic objectForKey:@"postalCodes"] != [NSNull null])
+                {
+                    NSArray *zipCodeArray = [dic objectForKey:@"postalCodes"];
+                    
+                    NSDictionary *firstData = [zipCodeArray objectAtIndex:1];
+                    
+                    id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
+                    
+                    AlertsRequest *request = [AlertsRequest new];
+                    NSString *zip = (NSString *)[firstData objectForKey:@"postalCode"];
+                    request.zipCode = [zip integerValue];
+                    
+                    [service getAlertWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
+                        NSLog(@"Println: %@",response.result);
+                        
+                        //TODO: Parse data
+                    }];
+                    
+                }
+            }
 
-    GMSCameraPosition *cam = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
-                                                         longitude:location.coordinate.longitude
-                                                              zoom:ZOOM
-                                                           bearing:BEARING viewingAngle:VIEWANGLE];
-    [self.mapView animateToCameraPosition:cam];
+        } failure:nil];
+        [operation start];
+        
+        GMSCameraPosition *cam = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
+                                                             longitude:location.coordinate.longitude
+                                                                  zoom:ZOOM
+                                                               bearing:BEARING viewingAngle:VIEWANGLE];
+        [self.mapView animateToCameraPosition:cam];
+        
+        self.firstLocation = location;
+    }
+
+    if(!self.firstLocation)
+        self.firstLocation = location;
+    
 }
 
 @end
