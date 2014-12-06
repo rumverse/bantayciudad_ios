@@ -1,0 +1,16 @@
+//
+//  BantayCiudad-Header.pch
+//  BantayCiudad
+//
+//  Created by Mylene Bayan on 12/6/14.
+//  Copyright (c) 2014 Bantay Ciudad. All rights reserved.
+//
+
+#ifndef BantayCiudad_BantayCiudad_Header_pch
+#define BantayCiudad_BantayCiudad_Header_pch
+
+
+#import "NSString+Additions.h"
+#import "AppDelegate+Additions.h"
+
+#endif

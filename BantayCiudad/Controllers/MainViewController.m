@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 
+#import "RESTAlertService.h"
+
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
@@ -85,6 +87,15 @@
     [self.view addSubview:self.tblMain];
     
     [self setupMapView];
+    
+    id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
+    
+    AlertsRequest *request = [AlertsRequest new];
+    request.zipCode = 1228;
+    
+    [service getAlertWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
+        NSLog(@"Println: %@",response.result);
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
