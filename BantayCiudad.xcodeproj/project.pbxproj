@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		382387AA1A32F28300A734CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387A71A32F28300A734CD /* ViewController.m */; };
 		382387AD1A32F2F000A734CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387AC1A32F2F000A734CD /* AppDelegate.m */; };
+		382387B31A32F98500A734CD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382387B11A32F98500A734CD /* DetailViewController.m */; };
 		7F1349671A32DB01001AC194 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1349661A32DB01001AC194 /* main.m */; };
 		7F13496D1A32DB01001AC194 /* BantayCiudad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F13496B1A32DB01001AC194 /* BantayCiudad.xcdatamodeld */; };
 		7F1349731A32DB01001AC194 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F1349711A32DB01001AC194 /* Main.storyboard */; };
@@ -32,6 +33,8 @@
 		382387A71A32F28300A734CD /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		382387AB1A32F2F000A734CD /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		382387AC1A32F2F000A734CD /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		382387B11A32F98500A734CD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		382387B21A32F98500A734CD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		7F1349611A32DB01001AC194 /* BantayCiudad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BantayCiudad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1349651A32DB01001AC194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F1349661A32DB01001AC194 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -69,6 +72,8 @@
 				382387AC1A32F2F000A734CD /* AppDelegate.m */,
 				382387A61A32F28300A734CD /* ViewController.h */,
 				382387A71A32F28300A734CD /* ViewController.m */,
+				382387B11A32F98500A734CD /* DetailViewController.m */,
+				382387B21A32F98500A734CD /* DetailViewController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				382387B31A32F98500A734CD /* DetailViewController.m in Sources */,
 				382387AD1A32F2F000A734CD /* AppDelegate.m in Sources */,
 				7F13496D1A32DB01001AC194 /* BantayCiudad.xcdatamodeld in Sources */,
 				382387AA1A32F28300A734CD /* ViewController.m in Sources */,
