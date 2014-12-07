@@ -44,7 +44,7 @@
     [self.addPhotoBtn addTarget:self action:@selector(launchCamera:) forControlEvents:UIControlEventTouchUpInside];
     
     request = [AlertsRequest new];
-    [request setSeverityType:Info];
+    [request setSeverityType:Information];
     
     self.imageView.hidden = YES;
 }
@@ -76,10 +76,10 @@
     UISegmentedControl *segment = (UISegmentedControl *)sender;
     switch (segment.selectedSegmentIndex) {
         case 0:
-            [request setSeverityType:Info];
+            [request setSeverityType:Information];
             break;
         case 1:
-            [request setSeverityType:Warning];
+            [request setSeverityType:InfoWarning];
             break;
         case 2:
             [request setSeverityType:Emergency];

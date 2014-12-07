@@ -85,10 +85,10 @@
 
 - (void)setSeverityType:(Severity)severityType{
     switch (severityType) {
-        case Info:
+        case Information:
             self.severity = @"info";
             break;
-        case Warning:
+        case InfoWarning:
             self.severity = @"warning";
             break;
         case Emergency:

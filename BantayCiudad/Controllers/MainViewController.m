@@ -21,6 +21,7 @@
 
 #import "DetailViewController.h"
 
+#import <SCLAlertView-Objective-C/SCLAlertView.h>
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
@@ -65,8 +66,11 @@
 @property (nonatomic) float heightMap;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addAlert;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
 
 @property (nonatomic, strong) NSArray *alert;
+
+@property (nonatomic, strong) Location *currentLocationInfo;
 
 @end
 
@@ -416,6 +420,7 @@
                     [service getPin:[zip integerValue] withCompletion:^(RESTResponse *response, NSError *error) {
                         Location *loc = (Location *)response.result;
                         
+                        self.currentLocationInfo = loc;
                         GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
                         marker.title = loc.location;
 
@@ -468,6 +473,13 @@
 //    
 //    return view;
 //}
+- (IBAction)infoButton_Action:(id)sender {
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    
+    NSString *str = [NSString stringWithFormat: @"Disaster: %@\nDrugs: %@\nViolence: %@\nFire: %@\nTraffic: %@\nOverall: %@\n", self.currentLocationInfo.safety.disaster, self.currentLocationInfo.safety.drugs, self.currentLocationInfo.safety.violence, self.currentLocationInfo.safety.fire, self.currentLocationInfo.safety.traffic, self.currentLocationInfo.safety.overall];
+    
+    [alert showInfo:self title:@"Safety Score" subTitle:str closeButtonTitle:@"Done" duration:0.0f]; // Info
+}
 
 - (NSArray *)alertForPredicate:(NSPredicate *)predicate{
     return [Alert MR_findAllSortedBy:@"dateCreated" ascending:YES withPredicate:predicate];
