@@ -28,6 +28,7 @@
 		F9BFC4DC1A336C9E008AE740 /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFC4DA1A336C9E008AE740 /* FeedCell.m */; };
 		F9BFC4DD1A336C9E008AE740 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BFC4DB1A336C9E008AE740 /* FeedCell.xib */; };
 		F9BFC4E01A337075008AE740 /* UIImageView+UIActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFC4DF1A337075008AE740 /* UIImageView+UIActivityIndicator.m */; };
+		F9BFC4E31A33B6E6008AE740 /* RESTImageUploadService.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFC4E21A33B6E6008AE740 /* RESTImageUploadService.m */; };
 		F9BFCBDF1A33367800912C46 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFCBDE1A33367800912C46 /* Alert.m */; };
 		F9BFCBE51A3336DC00912C46 /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFCBE41A3336DC00912C46 /* UserRequest.m */; };
 		F9BFCBE81A33370400912C46 /* Alert+REST.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFCBE71A33370400912C46 /* Alert+REST.m */; };
@@ -93,6 +94,9 @@
 		F9BFC4DB1A336C9E008AE740 /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = SOURCE_ROOT; };
 		F9BFC4DE1A337075008AE740 /* UIImageView+UIActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+UIActivityIndicator.h"; sourceTree = "<group>"; };
 		F9BFC4DF1A337075008AE740 /* UIImageView+UIActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+UIActivityIndicator.m"; sourceTree = "<group>"; };
+		F9BFC4E11A33B6E6008AE740 /* RESTImageUploadService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTImageUploadService.h; sourceTree = "<group>"; };
+		F9BFC4E21A33B6E6008AE740 /* RESTImageUploadService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTImageUploadService.m; sourceTree = "<group>"; };
+		F9BFC4E41A33BDC2008AE740 /* ImageUploadService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploadService.h; sourceTree = "<group>"; };
 		F9BFCBDD1A33367800912C46 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alert.h; path = BantayCiudad/Alert.h; sourceTree = SOURCE_ROOT; };
 		F9BFCBDE1A33367800912C46 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alert.m; path = BantayCiudad/Alert.m; sourceTree = SOURCE_ROOT; };
 		F9BFCBE31A3336DC00912C46 /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
@@ -301,6 +305,8 @@
 		F9BFCBE01A3336A800912C46 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F9BFC4E11A33B6E6008AE740 /* RESTImageUploadService.h */,
+				F9BFC4E21A33B6E6008AE740 /* RESTImageUploadService.m */,
 				F9BFCBE91A33373A00912C46 /* RESTAlertService.h */,
 				F9BFCBEA1A33373A00912C46 /* RESTAlertService.m */,
 				F9BFCC031A3338BF00912C46 /* Protocol */,
@@ -369,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				F9BFCC041A3338C800912C46 /* AlertService.h */,
+				F9BFC4E41A33BDC2008AE740 /* ImageUploadService.h */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -525,6 +532,7 @@
 				F9BFCBDF1A33367800912C46 /* Alert.m in Sources */,
 				F9BFCBF91A33380E00912C46 /* RKObjectManager+App.m in Sources */,
 				F9BFCBEB1A33373A00912C46 /* RESTAlertService.m in Sources */,
+				F9BFC4E31A33B6E6008AE740 /* RESTImageUploadService.m in Sources */,
 				382387C51A33761E00A734CD /* CircularImageView.m in Sources */,
 				F9BFCC071A33390600912C46 /* AlertsRequest.m in Sources */,
 				7F65F19B1A330B90000ED52D /* README.md in Sources */,

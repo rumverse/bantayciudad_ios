@@ -17,10 +17,12 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 
+#import "DetailViewController.h"
+
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
-#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 164
+#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 100
 #define DEFAULT_HEIGHT_HEADER                200.0f
 #define MIN_HEIGHT_HEADER                    10.0f
 #define DEFAULT_Y_OFFSET                     ([[UIScreen mainScreen] bounds].size.height == 480.0f) ? -200.0f : -250.0f
@@ -61,7 +63,6 @@
 @property (nonatomic) float heightMap;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addAlert;
-@property (nonatomic, strong) UISegmentedControl *segControl;
 
 @property (nonatomic, strong) NSArray *alert;
 
@@ -185,10 +186,6 @@
     [self.view insertSubview:self.mapView
                 belowSubview: self.tblMain];
     
-    self.segControl = [[UISegmentedControl alloc]initWithFrame:CGRectMake(0.0, 64.0, SCREEN_WIDTH,50.0)];
-    [self.tblMain insertSubview:self.segControl aboveSubview:self.mapView];
-    
-    
 }
 
 #pragma mark - Internal Methods
@@ -305,7 +302,7 @@
     NSInteger totalRow = [tableView numberOfRowsInSection:indexPath.section];
     
     //this is the last row in section.
-    if(indexPath.row == totalRow - 1){
+    if(indexPath.row == totalRow){
         // get total of cells's Height
         float cellsHeight = totalRow * cell.frame.size.height;
         // calculate tableView's Height with it's the header
@@ -323,7 +320,7 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"DetailViewControllerSegue" sender:self];
+    [self performSegueWithIdentifier:@"DetailViewControllerSegue" sender:indexPath];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -362,14 +359,13 @@
                 {
                     NSArray *zipCodeArray = [dic objectForKey:@"postalCodes"];
                     
-                    NSDictionary *firstData = [zipCodeArray objectAtIndex:1];
+                    NSDictionary *firstData = zipCodeArray.count ?  [zipCodeArray objectAtIndex:1] : nil ;
                     
                     id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
                     
                     AlertsRequest *request = [AlertsRequest new];
                     NSString *zip = (NSString *)[firstData objectForKey:@"postalCode"];
                     request.zipCode = [zip integerValue];
-                    request.zipCode = 1605;
                     
                     [service getAlertsWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
                         NSLog(@"Println: %@",response.result);
@@ -400,6 +396,16 @@
 
 - (NSArray *)alertForPredicate:(NSPredicate *)predicate{
     return [Alert MR_findAllSortedBy:@"dateCreated" ascending:YES withPredicate:predicate];
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSIndexPath *indexPath = (NSIndexPath *)sender;
+    if ([segue.identifier isEqualToString:@"DetailViewControllerSegue"]) {
+        Alert *alert = (Alert *)self.alert[indexPath.row];
+        DetailViewController *detailVC = segue.destinationViewController;
+        detailVC.alertID = alert.alertID;
+    }
 }
 
 @end

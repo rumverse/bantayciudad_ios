@@ -16,6 +16,8 @@
 
 @interface RESTServiceSupport : NSObject
 
+@property (nonatomic, readonly) RKObjectManager *objectManager;
+
 - (instancetype)initWithObjectManager:(RKObjectManager *)theObjectManager;
 
 - (void)handleStandardGETObject:(id)object path:(NSString *)path parameters:(NSDictionary *)parameters authRequired:(const BOOL)authRequired finished:(void (^)(id, NSError *))callback;
