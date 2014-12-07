@@ -43,6 +43,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ogF-lw-Flc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AYc-OE-fE8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -98,7 +99,7 @@
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s4o-Qa-GbJ">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s4o-Qa-GbJ">
                                                 <rect key="frame" x="0.0" y="180" width="320" height="200"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -106,7 +107,7 @@
                                                     <constraint firstAttribute="height" constant="200" id="Xb3-xr-Qi2"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJi-Ny-zoO" userLabel="Description View">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJi-Ny-zoO" userLabel="Description View">
                                                 <rect key="frame" x="10" y="400" width="300" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsh-s5-jlg">
@@ -210,36 +211,40 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jz8-01-b8B">
-                                <rect key="frame" x="16" y="48" width="288" height="29"/>
+                                <rect key="frame" x="16" y="78" width="288" height="29"/>
                                 <segments>
                                     <segment title="Info"/>
                                     <segment title="Warning"/>
                                     <segment title="Emergency"/>
                                 </segments>
                             </segmentedControl>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McE-zn-qDv">
-                                <rect key="frame" x="10" y="95" width="300" height="204"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McE-zn-qDv">
+                                <rect key="frame" x="10" y="123" width="300" height="124"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="A6x-03-aUM"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udL-El-PjY">
-                                <rect key="frame" x="15" y="378" width="119" height="49"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Uw-eQ-Lyn">
+                                <rect key="frame" x="37" y="393" width="246" height="41"/>
                                 <color key="backgroundColor" red="0.65346686180000002" green="1" blue="0.68210874840000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Send">
+                                <state key="normal" title="Attach Photo">
                                     <color key="titleColor" red="0.85501747949999996" green="0.40546746030000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sf6-bC-LPC">
-                                <rect key="frame" x="15" y="315" width="294" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Uw-eQ-Lyn">
-                                <rect key="frame" x="191" y="378" width="119" height="49"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BeG-gg-FqU">
+                                <rect key="frame" x="37" y="255" width="250" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="304" id="AFw-BK-mTI"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udL-El-PjY">
+                                <rect key="frame" x="37" y="442" width="246" height="39"/>
                                 <color key="backgroundColor" red="0.65346686180000002" green="1" blue="0.68210874840000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Attach Puto">
+                                <state key="normal" title="Send">
                                     <color key="titleColor" red="0.85501747949999996" green="0.40546746030000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -249,15 +254,16 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="addPhotoBtn" destination="6Uw-eQ-Lyn" id="sLX-mh-npd"/>
                         <outlet property="alertTypeControl" destination="jz8-01-b8B" id="2gH-iS-cny"/>
                         <outlet property="descriptionTextView" destination="McE-zn-qDv" id="63C-Qd-bSM"/>
-                        <outlet property="locationTextField" destination="sf6-bC-LPC" id="BhU-4K-5f8"/>
+                        <outlet property="imageView" destination="BeG-gg-FqU" id="xJm-hS-e88"/>
                         <outlet property="sendButton" destination="udL-El-PjY" id="t9I-XY-2Qp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnQ-br-9b7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="363" y="-194"/>
+            <point key="canvasLocation" x="539" y="466"/>
         </scene>
     </scenes>
     <resources>
