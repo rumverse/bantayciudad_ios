@@ -179,7 +179,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager requestWhenInUseAuthorization];
     self.mapView = [[GMSMapView alloc] initWithFrame:CGRectMake(0, self.default_Y_mapView, SCREEN_WIDTH, self.heighTableView)];
-    self.mapView.settings.myLocationButton = YES;
+    //self.mapView.settings.myLocationButton = YES;
     //self.mapView.settings.compassButton = YES;
     // Listen to the myLocation property of GMSMapView.
     [self.mapView addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context: nil];
@@ -366,7 +366,6 @@
                 {
                     NSArray *zipCodeArray = [dic objectForKey:@"postalCodes"];
                     
-<<<<<<< HEAD
 //                    GMSMutablePath *poly = [GMSMutablePath path];
 //                    //Add overlay
 //                    for (NSDictionary *d in zipCodeArray)
@@ -393,10 +392,7 @@
 //                    polygon.strokeWidth = 5;
 //                    polygon.map = self.mapView;
                     
-                    NSDictionary *firstData = [zipCodeArray objectAtIndex:1];
-=======
                     NSDictionary *firstData = zipCodeArray.count ?  [zipCodeArray objectAtIndex:1] : nil ;
->>>>>>> a61802526150c1794b4604e27cb1c68d014a4381
                     
                     id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
                     
@@ -415,18 +411,26 @@
                         
                         GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
                         marker.title = loc.location;
-//                        marker.snippet = [NSString stringWithFormat: @"Disaster: %@\nDrugs: %@\nViolence: %@\nFire: %@\nTraffic: %@\nOverall: %@\n", loc.safety.disaster, loc.safety.drugs, loc.safety.violence, loc.safety.fire, loc.safety.traffic, loc.safety.overall];
+
                         NSString *overall = @"0.0";
                         
                         if(loc.safety.overall != nil)
                             overall = loc.safety.overall;
                         
-                        marker.snippet = [NSString stringWithFormat:@"Safety Score: %@", overall];
+                        marker.snippet = [NSString stringWithFormat:@"%@\nSafety Score: %@", loc.safety_message, overall];
                         marker.infoWindowAnchor = CGPointMake(0.5, 0.5);
                         marker.map = self.mapView;
                         
                         [self.mapView setSelectedMarker:marker];
                         
+//                        //Add overlay
+//                        GMSCircle *circ = [GMSCircle circleWithPosition:location.coordinate
+//                                                                 radius:1000];
+//                        
+//                        circ.fillColor = [UIColor greenColor];
+//                        circ.strokeColor = [UIColor redColor];
+//                        circ.strokeWidth = 5;
+//                        circ.map = self.mapView;
                         GMSCameraPosition *cam = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
                                                                              longitude:location.coordinate.longitude
                                                                                   zoom:ZOOM

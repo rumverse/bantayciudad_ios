@@ -77,7 +77,7 @@ static NSString *const kEndpointGetAlertDetail = @"/getalert";
     }];
 }
 
-<<<<<<< HEAD
+
 - (void)getPin:(NSInteger) zip withCompletion:(void (^)(RESTResponse *, NSError *))completion
 {
     NSDictionary *param = @{
@@ -91,6 +91,10 @@ static NSString *const kEndpointGetAlertDetail = @"/getalert";
 }
 - (void)getAlertDetailWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *, NSError *))completion{
     [self handleStandardPOSTObject:request path:kEndpointGetAlertDetail parameters:nil authRequired:NO finished:^(id result, NSError *error) {
+        RESTResponse *response = (RESTResponse *)result;
+        completion(response, error);
+    }];
+}
 
 - (void)getAlertDetailForID:(NSString *)alertID withCompletion:(void (^)(RESTResponse *, NSError *))completion{
     [self handleStandardGETObject:nil forEntity:YES path:kEndpointGetAlertDetail parameters:@{@"id":alertID} authRequired:NO finished:^(id result, NSError *error) {
