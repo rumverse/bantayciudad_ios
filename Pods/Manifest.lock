@@ -6,6 +6,37 @@ PODS:
   - MagicalRecord (2.3.0-beta.3):
     - MagicalRecord/Core (= 2.3.0-beta.3)
   - MagicalRecord/Core (2.3.0-beta.3)
+  - MRProgress (0.4.3):
+    - MRProgress/ActivityIndicator (= 0.4.3)
+    - MRProgress/Blur (= 0.4.3)
+    - MRProgress/Circular (= 0.4.3)
+    - MRProgress/Helper (= 0.4.3)
+    - MRProgress/Icons (= 0.4.3)
+    - MRProgress/MessageInterceptor (= 0.4.3)
+    - MRProgress/NavigationBarProgress (= 0.4.3)
+    - MRProgress/Overlay (= 0.4.3)
+    - MRProgress/Stopable (= 0.4.3)
+    - MRProgress/WeakProxy (= 0.4.3)
+  - MRProgress/ActivityIndicator (0.4.3):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.4.3):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.4.3):
+    - MRProgress/Helper
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.4.3)
+  - MRProgress/Icons (0.4.3)
+  - MRProgress/MessageInterceptor (0.4.3)
+  - MRProgress/NavigationBarProgress (0.4.3)
+  - MRProgress/Overlay (0.4.3):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/Stopable (0.4.3):
+    - MRProgress/Helper
+  - MRProgress/WeakProxy (0.4.3)
   - RestKit (0.23.3):
     - RestKit/Core (= 0.23.3)
   - RestKit/Core (0.23.3):
@@ -30,14 +61,17 @@ PODS:
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SOCKit (1.1)
+  - TPKeyboardAvoiding (1.2.4)
   - TransitionKit (2.1.0)
   - UIColor+BFPaperColors (1.3.1)
 
 DEPENDENCIES:
   - Google-Maps-iOS-SDK (~> 1.9)
   - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, tag `v2.3.0-beta.3`)
+  - MRProgress (~> 0.4.3)
   - RestKit (~> 0.23.1)
   - SDWebImage (~> 3.7)
+  - TPKeyboardAvoiding (~> 1.2.3)
   - UIColor+BFPaperColors (~> 1.3)
 
 EXTERNAL SOURCES:
@@ -55,10 +89,12 @@ SPEC CHECKSUMS:
   Google-Maps-iOS-SDK: d176593f33f931a500474a46c2a3c3d6d4b187cd
   ISO8601DateFormatterValueTransformer: a705384ea6531255258e25b6480ba1180db703a0
   MagicalRecord: 23dfe0350eab4767cc1ce7d247af4e4cd54ee72c
+  MRProgress: e588fb8d0fba293715eaf0e485dd8402f4ce1de6
   RestKit: 193a35cddae5198388977abaedad129f8acb978b
   RKValueTransformers: 67b4ea3eb6a1c1a0b8c3c37eb4e4c05e4febeba2
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SOCKit: d8d0dd3688ae1026c12367570da8fa8e1a6980fb
+  TPKeyboardAvoiding: 925e1e1912597d1a4956697eec3bd9656552153c
   TransitionKit: 6a6f3ddda38ae758778aa889dcb930e4f8d64edc
   UIColor+BFPaperColors: c7e4c6e4d82e889d507b3c2d09e6caf816529f18
 

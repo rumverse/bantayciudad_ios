@@ -24,6 +24,72 @@
 #define COCOAPODS_VERSION_MINOR_ISO8601DateFormatterValueTransformer 6
 #define COCOAPODS_VERSION_PATCH_ISO8601DateFormatterValueTransformer 0
 
+// MRProgress
+#define COCOAPODS_POD_AVAILABLE_MRProgress
+#define COCOAPODS_VERSION_MAJOR_MRProgress 0
+#define COCOAPODS_VERSION_MINOR_MRProgress 4
+#define COCOAPODS_VERSION_PATCH_MRProgress 3
+
+// MRProgress/ActivityIndicator
+#define COCOAPODS_POD_AVAILABLE_MRProgress_ActivityIndicator
+#define COCOAPODS_VERSION_MAJOR_MRProgress_ActivityIndicator 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_ActivityIndicator 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_ActivityIndicator 3
+
+// MRProgress/Blur
+#define COCOAPODS_POD_AVAILABLE_MRProgress_Blur
+#define COCOAPODS_VERSION_MAJOR_MRProgress_Blur 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_Blur 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_Blur 3
+
+// MRProgress/Circular
+#define COCOAPODS_POD_AVAILABLE_MRProgress_Circular
+#define COCOAPODS_VERSION_MAJOR_MRProgress_Circular 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_Circular 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_Circular 3
+
+// MRProgress/Helper
+#define COCOAPODS_POD_AVAILABLE_MRProgress_Helper
+#define COCOAPODS_VERSION_MAJOR_MRProgress_Helper 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_Helper 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_Helper 3
+
+// MRProgress/Icons
+#define COCOAPODS_POD_AVAILABLE_MRProgress_Icons
+#define COCOAPODS_VERSION_MAJOR_MRProgress_Icons 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_Icons 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_Icons 3
+
+// MRProgress/MessageInterceptor
+#define COCOAPODS_POD_AVAILABLE_MRProgress_MessageInterceptor
+#define COCOAPODS_VERSION_MAJOR_MRProgress_MessageInterceptor 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_MessageInterceptor 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_MessageInterceptor 3
+
+// MRProgress/NavigationBarProgress
+#define COCOAPODS_POD_AVAILABLE_MRProgress_NavigationBarProgress
+#define COCOAPODS_VERSION_MAJOR_MRProgress_NavigationBarProgress 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_NavigationBarProgress 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_NavigationBarProgress 3
+
+// MRProgress/Overlay
+#define COCOAPODS_POD_AVAILABLE_MRProgress_Overlay
+#define COCOAPODS_VERSION_MAJOR_MRProgress_Overlay 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_Overlay 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_Overlay 3
+
+// MRProgress/Stopable
+#define COCOAPODS_POD_AVAILABLE_MRProgress_Stopable
+#define COCOAPODS_VERSION_MAJOR_MRProgress_Stopable 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_Stopable 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_Stopable 3
+
+// MRProgress/WeakProxy
+#define COCOAPODS_POD_AVAILABLE_MRProgress_WeakProxy
+#define COCOAPODS_VERSION_MAJOR_MRProgress_WeakProxy 0
+#define COCOAPODS_VERSION_MINOR_MRProgress_WeakProxy 4
+#define COCOAPODS_VERSION_PATCH_MRProgress_WeakProxy 3
+
 // MagicalRecord
 #define COCOAPODS_POD_AVAILABLE_MagicalRecord
 #define COCOAPODS_VERSION_MAJOR_MagicalRecord 2
@@ -95,6 +161,12 @@
 #define COCOAPODS_VERSION_MAJOR_SOCKit 1
 #define COCOAPODS_VERSION_MINOR_SOCKit 1
 #define COCOAPODS_VERSION_PATCH_SOCKit 0
+
+// TPKeyboardAvoiding
+#define COCOAPODS_POD_AVAILABLE_TPKeyboardAvoiding
+#define COCOAPODS_VERSION_MAJOR_TPKeyboardAvoiding 1
+#define COCOAPODS_VERSION_MINOR_TPKeyboardAvoiding 2
+#define COCOAPODS_VERSION_PATCH_TPKeyboardAvoiding 4
 
 // TransitionKit
 #define COCOAPODS_POD_AVAILABLE_TransitionKit

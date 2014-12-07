@@ -21,4 +21,8 @@ pod 'Google-Maps-iOS-SDK', '~> 1.9'
 
 pod 'UIColor+BFPaperColors', '~>1.3'
 
+pod 'TPKeyboardAvoiding', '~> 1.2.3'
+
+pod 'MRProgress', '~> 0.4.3'
+
 end

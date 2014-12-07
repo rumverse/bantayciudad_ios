@@ -47,11 +47,11 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    Alert *alert = [Alert MR_findFirstByAttribute:@"alertID" withValue:@"5483488231fc4808e238594f"];
+    Alert *alert = [Alert MR_findFirstByAttribute:@"alertID" withValue:_alertID];
     if (alert == nil) {
         id <AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[AppDelegate delegate].mainObjectManager];
         
-        [service getAlertDetailForID:@"5483488231fc4808e238594f" withCompletion:^(RESTResponse *response, NSError *error) {
+        [service getAlertDetailForID:_alertID withCompletion:^(RESTResponse *response, NSError *error) {
             if (response.result) {
                 NSLog(@"response: %@",response.result);
             }

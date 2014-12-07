@@ -20,10 +20,8 @@
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *alertTypeControl;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
-@property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *addPhotoBtn;
 
 @end
 
@@ -41,11 +39,19 @@
     
     [self.sendButton addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.addPhotoBtn addTarget:self action:@selector(launchCamera:) forControlEvents:UIControlEventTouchUpInside];
-    
     request = [AlertsRequest new];
     [request setSeverityType:Info];
     
+    self.view.backgroundColor = [UIColor paperColorGray300];
+    
+    self.descriptionTextView.layer.cornerRadius = 10.0;
+    self.descriptionTextView.backgroundColor = [UIColor paperColorGray400];
+    
+    self.sendButton.backgroundColor = [UIColor paperColorLightBlue400];
+    [self.sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(launchCamera:)];
+    [self.imageView addGestureRecognizer:tapGesture];
     self.imageView.hidden = YES;
 }
 
@@ -132,8 +138,6 @@
 #pragma mark - Photo Action Sheet Delegate
 -(void)launchCamera:(id)sender{
     
-    self.addPhotoBtn.hidden = YES;
-    
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
     picker.delegate = (id)self;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -150,8 +154,7 @@
     {
         UIImageWriteToSavedPhotosAlbum(capturedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }
-    
-    self.imageView.hidden = NO;
+
     self.imageView.image = capturedImage;
 }
 
