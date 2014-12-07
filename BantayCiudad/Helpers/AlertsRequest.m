@@ -25,16 +25,7 @@
 + (RKObjectMapping *)requestMapping {
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [mapping addAttributeMappingsFromDictionary:@{
-                                                  @"alertDescription": @"description",
                                                   @"zipCodeNum" : @"zip",
-                                                  @"latitudeNum" : @"latitude",
-                                                  @"longitudeNum": @"longitude",
-                                                  @"severity": @"severity",
-                                                  @"alertTypeStr" : @"alert",
-                                                  @"userTypeStr" : @"user_type",
-                                                  @"userIDNum" : @"user_id",
-                                                  @"userName" : @"username",
-                                                  @"apiKey":@"api_key"
                                                   }];
     
     return mapping;

@@ -68,7 +68,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addAlert;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 
-@property (nonatomic, strong) NSArray *alert;
+@property (nonatomic, strong) NSMutableArray *alert;
 
 @property (nonatomic, strong) Location *currentLocationInfo;
 
@@ -144,7 +144,9 @@
         }
     }];
     
-    self.alert = [Alert MR_findAll];
+    self.alert = [Alert MR_findAll].mutableCopy;
+    
+    [self performSelector:@selector(getAlerts) withObject:nil afterDelay:5.0];
     
 }
 
@@ -407,14 +409,15 @@
                     
                     id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
                     
-                    AlertsRequest *request = [AlertsRequest new];
                     NSString *zip = (NSString *)[firstData objectForKey:@"postalCode"];
-                    request.zipCode = 1605;
                     
-                    [service getAlertsWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
+                    [service getAlertsWithZip:zip.integerValue withCompletion:^(RESTResponse *response, NSError *error) {
                         NSLog(@"Println: %@",response.result);
-                        
-                        //TODO: Parse data
+                        NSArray *resp = (NSArray *)response.result;
+                        for (int i = 0; i < resp.count; i++) {
+                            [self.alert addObject:(Alert *)response.result];
+                            [self.tblMain reloadData];
+                        }
                     }];
                     
                     [service getPin:[zip integerValue] withCompletion:^(RESTResponse *response, NSError *error) {
@@ -493,6 +496,19 @@
         DetailViewController *detailVC = segue.destinationViewController;
         detailVC.alertID = alert.alertID;
     }
+}
+
+- (void)getAlerts{
+    id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[AppDelegate delegate].mainObjectManager];
+    
+    [service getAlertsWithZip:self.currentLocationInfo.zip.integerValue withCompletion:^(RESTResponse *response, NSError *error) {
+        NSLog(@"Println: %@",response.result);
+        NSArray *resp = (NSArray *)response.result;
+        for (int i = 0; i < resp.count; i++) {
+            [self.alert addObject:(Alert *)response.result];
+            [self.tblMain reloadData];
+        }
+    }];
 }
 
 @end

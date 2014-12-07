@@ -14,7 +14,7 @@
 #import "Location+REST.h"
 #import "SafetyScore+REST.h"
 
-static NSString *const kEndpointGetAlerts = @"/alerts/feeds";
+static NSString *const kEndpointGetAlerts = @"/alerts/feeds/";
 static NSString *const kEndpointSendAlert = @"/alerts";
 static NSString *const kEndpointLocation = @"/location/";
 static NSString *const kEndpointGetAlertDetail = @"/getalert";
@@ -65,6 +65,18 @@ static NSString *const kEndpointGetAlertDetail = @"/getalert";
 
 - (void)getAlertsWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *, NSError *))completion{
     [self handleStandardGETObject:request forEntity:YES path:kEndpointGetAlerts parameters:nil authRequired:NO finished:^(id result, NSError *error) {
+        RESTResponse *response = (RESTResponse *)result;
+        completion(response, completion);
+    }];
+}
+
+- (void)getAlertsWithZip:(NSInteger) zip withCompletion:(void (^)(RESTResponse *, NSError *))completion
+{
+    NSDictionary *param = @{
+                            @"zip": @(zip),
+                            };
+    
+    [self handleStandardGETObject:nil forEntity:YES path:kEndpointGetAlerts parameters:param authRequired:NO finished:^(id result, NSError *error) {
         RESTResponse *response = (RESTResponse *)result;
         completion(response, completion);
     }];
