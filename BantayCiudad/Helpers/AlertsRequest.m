@@ -10,7 +10,7 @@
 
 @interface AlertsRequest ()
 
-@property (nonatomic, strong) NSString *severity;
+
 @property (nonatomic, strong) NSString *userTypeStr;
 @property (nonatomic, strong) NSString *alertTypeStr;
 @property (nonatomic, strong) NSNumber *zipCodeNum;
