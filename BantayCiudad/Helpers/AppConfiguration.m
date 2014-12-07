@@ -62,7 +62,7 @@
 }
 
 - (void)defaultConfiguration{
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:97.0/255.0 green:5.0/255.0 blue:106.0/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:67.0/255.0 green:185.0/255.0 blue:110.0/255.0 alpha:1.0]];
     
     [self setRESTEndpoints];
 }

@@ -33,7 +33,8 @@
                                                   @"alertTypeStr" : @"alert",
                                                   @"userTypeStr" : @"user_type",
                                                   @"userIDNum" : @"user_id",
-                                                  @"userName" : @"username"
+                                                  @"userName" : @"username",
+                                                  @"apiKey":@"api_key"
                                                   }];
     
     return mapping;

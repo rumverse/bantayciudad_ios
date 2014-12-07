@@ -18,4 +18,7 @@ pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git'
 pod 'SDWebImage', '~> 3.7'
 
 pod 'Google-Maps-iOS-SDK', '~> 1.9'
+
+pod 'UIColor+BFPaperColors', '~>1.3'
+
 end
