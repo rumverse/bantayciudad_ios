@@ -16,7 +16,6 @@
 @property (nonatomic, strong) NSString *error;
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *alertID;
-@property (nonatomic, assign) BOOL isSuccess;
 
 + (RKMapping *)responseMappingForResult:(NSString *)keyPath mapping:(RKMapping *)resultMapping;
 

@@ -23,15 +23,20 @@
 
 - (void)awakeFromNib {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     // Initialization code
+}
+
+- (UIEdgeInsets)separatorInset{
+    return UIEdgeInsetsZero;
 }
 
 - (void)cellForAlert:(Alert *)alert forRowAtIndexPath:(NSIndexPath *)indexPath{
     self.descriptionLabel.text = alert.alertDescription;
     
-    [self.avatarImageView setImageWithURL:[NSURL URLWithString:@"avatar"] placeholderImage:[UIImage imageNamed:@"avatar"] usingActivityIndicatorStyle:None];
+    [self.avatarImageView setImageWithURL:[NSString stringWithFormat:@"http://www.gravatar.com/avatar/%@",alert.userName.MD5String].urlValue placeholderImage:[UIImage imageNamed:@"avatar"] usingActivityIndicatorStyle:None];
     
-    [self.iconImageView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"avatar"] usingActivityIndicatorStyle:None];
+    [self.iconImageView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"fire"] usingActivityIndicatorStyle:None];
 }
 
 

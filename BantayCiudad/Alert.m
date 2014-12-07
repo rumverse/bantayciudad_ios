@@ -21,5 +21,6 @@
 @dynamic alertID;
 @dynamic userName;
 @dynamic userType;
+@dynamic photo;
 
 @end

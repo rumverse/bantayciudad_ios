@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 
+#import "RESTImageUploadService.h"
+
+#import <AFNetworking/AFHTTPRequestOperation.h>
+
 
 @interface ViewController ()
 
@@ -19,7 +23,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-
+    id <ImageUploadService> service = [[RESTImageUploadService alloc]initWithObjectManager:[AppDelegate delegate].mainObjectManager];
+    
+    [service uploadImage:[UIImage imageNamed:@"fire.png"] withCompletion:^(NSDictionary *response, NSError *error) {
+        if (!error) {
+         
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

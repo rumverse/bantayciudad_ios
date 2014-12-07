@@ -15,6 +15,7 @@
 
 - (void)getPin:(NSInteger) zip withCompletion:(void (^)(RESTResponse *, NSError *))completion;
 - (void)getAlertDetailWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
+- (void)getAlertDetailForID:(NSString *)alertID withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
 
 
 @end

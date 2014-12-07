@@ -63,7 +63,7 @@
         {
             RESTResponse *response = mappingResult.firstObject;
             NSError *resultError = nil;
-            if (response.isSuccess == NO) {
+            if (!response) {
                 resultError = [self errorForFailedRequest:response operation:operation.HTTPRequestOperation error:nil];
             }
             
@@ -119,7 +119,7 @@
         {
             RESTResponse *response = mappingResult.firstObject;
             NSError *resultError = nil;
-            if (response.isSuccess == NO) {
+            if (!response) {
                 resultError = [self errorForFailedRequest:response operation:operation.HTTPRequestOperation error:nil];
             }
             if ( callback != nil ) {

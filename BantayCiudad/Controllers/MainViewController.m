@@ -19,14 +19,16 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 
+#import "DetailViewController.h"
+
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
-#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 100
-#define DEFAULT_HEIGHT_HEADER                200.0f
+#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 35
+#define DEFAULT_HEIGHT_HEADER                235.0f
 #define MIN_HEIGHT_HEADER                    10.0f
 #define DEFAULT_Y_OFFSET                     ([[UIScreen mainScreen] bounds].size.height == 480.0f) ? -200.0f : -250.0f
-#define FULL_Y_OFFSET                        -200.0f
+#define FULL_Y_OFFSET                        -20.0f
 #define MIN_Y_OFFSET_TO_REACH                -30
 #define OPEN_SHUTTER_LATITUDE_MINUS          .005
 #define CLOSE_SHUTTER_LATITUDE_MINUS         .018
@@ -81,11 +83,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     
     self.tblMain = [[UITableView alloc]  initWithFrame: CGRectMake(0, 20, SCREEN_WIDTH, self.heighTableView)];
+
     self.tblMain.tableHeaderView  = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, self.heighTableViewHeader)];
     [self.tblMain setBackgroundColor:[UIColor clearColor]];
     [self.tblMain registerNib:[FeedCell nib] forCellReuseIdentifier:[FeedCell reuseIdentifier]];
+    self.tblMain.separatorInset = UIEdgeInsetsZero;
     self.tblMain.estimatedRowHeight = 75.0;
     self.tblMain.rowHeight = UITableViewAutomaticDimension;
     
@@ -112,7 +117,7 @@
     request.zipCode = 1605;
     request.latitude = 121.65;
     request.longitude = 54.1212;
-    request.alertDescription = @"Traffic Accident with Bus and Jeepney";
+    request.alertDescription = @"Traffic Accident with Bus and Kenneth";
     request.severityType = Warning;
     request.userType = Authority;
     request.alertType = Traffic;
@@ -164,7 +169,7 @@
     _latitudeUserDown           = OPEN_SHUTTER_LATITUDE_MINUS;
     _default_Y_mapView          = DEFAULT_Y_OFFSET;
     _headerYOffSet              = DEFAULT_Y_OFFSET;
-    _heightMap                  = 1000.0f;
+    _heightMap                  = 1020.0f;
     _regionAnimated             = YES;
     _userLocationUpdateAnimated = YES;
 }
@@ -184,6 +189,7 @@
     self.mapView.delegate = self;
     [self.view insertSubview:self.mapView
                 belowSubview: self.tblMain];
+    
 }
 
 #pragma mark - Internal Methods
@@ -211,6 +217,7 @@
                          self.tblMain.tableHeaderView = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, self.minHeighTableViewHeader)];
                          self.mapView.frame = CGRectMake(0, FULL_Y_OFFSET, self.mapView.frame.size.width, self.heightMap);
                          self.tblMain.frame = CGRectMake(0, self.Y_tableViewOnBottom, self.tblMain.frame.size.width, self.tblMain.frame.size.height);
+                         self.tblMain.backgroundColor = [UIColor whiteColor];
                      }
                      completion:^(BOOL finished){
                          // Disable cells selection
@@ -231,6 +238,7 @@
                          self.mapView.frame = CGRectMake(0, self.default_Y_mapView, self.mapView.frame.size.width, self.heighTableView);
                          self.tblMain.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.headerYOffSet, self.view.frame.size.width, self.heighTableViewHeader)];
                          self.tblMain.frame = CGRectMake(0, self.default_Y_tableView, self.tblMain.frame.size.width, self.tblMain.frame.size.height);
+                         self.tblMain.backgroundColor = [UIColor clearColor];
                      }
                      completion:^(BOOL finished){
                          // Enable cells selection
@@ -300,7 +308,7 @@
     NSInteger totalRow = [tableView numberOfRowsInSection:indexPath.section];
     
     //this is the last row in section.
-    if(indexPath.row == totalRow - 1){
+    if(indexPath.row == totalRow){
         // get total of cells's Height
         float cellsHeight = totalRow * cell.frame.size.height;
         // calculate tableView's Height with it's the header
@@ -318,7 +326,7 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"DetailViewControllerSegue" sender:self];
+    [self performSegueWithIdentifier:@"DetailViewControllerSegue" sender:indexPath];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -358,6 +366,7 @@
                 {
                     NSArray *zipCodeArray = [dic objectForKey:@"postalCodes"];
                     
+<<<<<<< HEAD
 //                    GMSMutablePath *poly = [GMSMutablePath path];
 //                    //Add overlay
 //                    for (NSDictionary *d in zipCodeArray)
@@ -385,12 +394,15 @@
 //                    polygon.map = self.mapView;
                     
                     NSDictionary *firstData = [zipCodeArray objectAtIndex:1];
+=======
+                    NSDictionary *firstData = zipCodeArray.count ?  [zipCodeArray objectAtIndex:1] : nil ;
+>>>>>>> a61802526150c1794b4604e27cb1c68d014a4381
                     
                     id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
                     
                     AlertsRequest *request = [AlertsRequest new];
                     NSString *zip = (NSString *)[firstData objectForKey:@"postalCode"];
-                    request.zipCode = [zip integerValue];
+                    request.zipCode = 1605;
                     
                     [service getAlertsWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
                         NSLog(@"Println: %@",response.result);
@@ -448,6 +460,16 @@
 
 - (NSArray *)alertForPredicate:(NSPredicate *)predicate{
     return [Alert MR_findAllSortedBy:@"dateCreated" ascending:YES withPredicate:predicate];
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSIndexPath *indexPath = (NSIndexPath *)sender;
+    if ([segue.identifier isEqualToString:@"DetailViewControllerSegue"]) {
+        Alert *alert = (Alert *)self.alert[indexPath.row];
+        DetailViewController *detailVC = segue.destinationViewController;
+        detailVC.alertID = alert.alertID;
+    }
 }
 
 @end

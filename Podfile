@@ -18,4 +18,6 @@ pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git'
 pod 'SDWebImage', '~> 3.7'
 
 pod 'Google-Maps-iOS-SDK', '~> 1.9'
+
+pod 'ALAlertBanner', '~>0.3.1'
 end

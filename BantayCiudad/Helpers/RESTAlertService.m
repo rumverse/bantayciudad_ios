@@ -15,9 +15,10 @@
 #import "SafetyScore+REST.h"
 
 static NSString *const kEndpointGetAlerts = @"/alerts/feeds";
-static NSString *const kEndpointGetAlertDetail = @"/alerts";
 static NSString *const kEndpointSendAlert = @"/alerts";
 static NSString *const kEndpointLocation = @"/location/";
+static NSString *const kEndpointGetAlertDetail = @"/getalert";
+
 @implementation RESTAlertService
 
 + (void)configureEndpoints:(RKObjectManager *)manager{
@@ -49,8 +50,8 @@ static NSString *const kEndpointLocation = @"/location/";
                                                                            statusCodes:okStatusCodes]];
     
     [manager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:[RESTResponse responseMappingForResult:nil mapping:nil]
-                                                                                method:RKRequestMethodGET
-                                                                           pathPattern:kEndpointGetAlertDetail
+                                                                                method:RKRequestMethodPOST
+                                                                           pathPattern:kEndpointSendAlert
                                                                                keyPath:nil
                                                                            statusCodes:okStatusCodes]];
     
@@ -76,6 +77,7 @@ static NSString *const kEndpointLocation = @"/location/";
     }];
 }
 
+<<<<<<< HEAD
 - (void)getPin:(NSInteger) zip withCompletion:(void (^)(RESTResponse *, NSError *))completion
 {
     NSDictionary *param = @{
@@ -89,6 +91,9 @@ static NSString *const kEndpointLocation = @"/location/";
 }
 - (void)getAlertDetailWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *, NSError *))completion{
     [self handleStandardPOSTObject:request path:kEndpointGetAlertDetail parameters:nil authRequired:NO finished:^(id result, NSError *error) {
+
+- (void)getAlertDetailForID:(NSString *)alertID withCompletion:(void (^)(RESTResponse *, NSError *))completion{
+    [self handleStandardGETObject:nil forEntity:YES path:kEndpointGetAlertDetail parameters:@{@"id":alertID} authRequired:NO finished:^(id result, NSError *error) {
         RESTResponse *response = (RESTResponse *)result;
         completion(response, error);
     }];

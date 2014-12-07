@@ -9,6 +9,15 @@
 #import "DetailViewController.h"
 #import "CircularImageView.h"
 
+#import "RESTAlertService.h"
+
+#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+
+#import "Alert.h"
+
+#import "UIImageView+UIActivityIndicator.h"
+
 @interface DetailViewController ()
 
 
@@ -33,8 +42,28 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self setData];
-    [self.descriptionLabel sizeToFit];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    Alert *alert = [Alert MR_findFirstByAttribute:@"alertID" withValue:@"5483488231fc4808e238594f"];
+    if (alert == nil) {
+        id <AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[AppDelegate delegate].mainObjectManager];
+        
+        [service getAlertDetailForID:@"5483488231fc4808e238594f" withCompletion:^(RESTResponse *response, NSError *error) {
+            if (response.result) {
+                NSLog(@"response: %@",response.result);
+            }
+            else{
+                NSLog(@"Error: %@",error.localizedDescription);
+            }
+        }];
+    }
+    else{
+        [self setData:alert];
+        [self.descriptionLabel sizeToFit];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,12 +71,18 @@
     // Dispose of any resources that can be recreated.  
 }
 
-- (void)setData{
-    self.nameLabel.text = @"Jeniean Las Pobres";
+- (void)setData:(Alert *)alert{
+    self.nameLabel.text = alert.userName;
     self.locationLabel.text = @"Pasig, City";
     self.titleLabel.text = @"I am the title";
-    self.imageView.image = [UIImage imageNamed:@"noImage.jpg"];
-    self.descriptionLabel.text = @"Pasig is Pasig smsfmdfmfmdjfskfsffsdfndncjcjcjcncsdjhaihfsfnckajsncjsahfckasjkhsajfbjasbfasjbcmsabcjasifhskfnckanfkasnfksnakcnskafnksajfkasjfcsjfajfkascfasnfkwjfiejfkwjdkamd,samccmcmmcmcmcmcmcmsdsjfejsanfkasfkjsknasksajfhwqfowfwfnfknwqkfkwjfkmalfnkajfelmflaowjflamflsmflasmflmslnsdkgksmfglajoisajfsmfalmjascnskcniscmndkncksmcsadmcmsc kmcds c";
+    [self.avatar setImageWithURL:[NSString stringWithFormat:@"http://www.gravatar.com/avatar/%@",alert.userName.MD5String].urlValue placeholderImage:[UIImage imageNamed:@"avatar"] usingActivityIndicatorStyle:None];
+    if (alert.photo) {
+        [self.imageView setImageWithURL:alert.photo.urlValue placeholderImage:[UIImage imageNamed:@""] usingActivityIndicatorStyle:None];
+    }
+    else{
+        self.imageViewHeightConstraint.constant = 0.0;
+    }
+    self.descriptionLabel.text = alert.alertDescription;
     
     CGSize maximumLabelSize = CGSizeMake(self.descriptionLabel.frame.size.width,CGFLOAT_MAX);
     CGSize expectedLabelSize = [[self.descriptionLabel text] boundingRectWithSize: maximumLabelSize options: NSStringDrawingUsesLineFragmentOrigin attributes: @{ NSFontAttributeName: [self.descriptionLabel font] } context: nil].size;
