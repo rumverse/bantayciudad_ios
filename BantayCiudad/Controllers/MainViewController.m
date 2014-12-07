@@ -10,6 +10,8 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <AFNetworking/AFJSONRequestOperation.h>
 #import "RESTAlertService.h"
+#import "Location.h"
+#import "SafetyScore.h"
 #import "FeedCell.h"
 
 #import "Alert.h"
@@ -19,6 +21,7 @@
 
 #import "DetailViewController.h"
 
+#import <SCLAlertView-Objective-C/SCLAlertView.h>
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
@@ -35,7 +38,7 @@
 #define ZOOM 15.5
 #define VIEWANGLE 45
 //#define DISTANCE 1609.34
-#define DISTANCE 5
+#define DISTANCE 500
 @interface MainViewController ()<UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, GMSMapViewDelegate>
 
 @property (strong, nonatomic) UITableView *tblMain;
@@ -63,9 +66,13 @@
 @property (nonatomic) float heightMap;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addAlert;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
 
-@property (nonatomic, strong) NSArray *alert;
+@property (nonatomic, strong) NSMutableArray *alert;
 
+@property (nonatomic, strong) Location *currentLocationInfo;
+
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation MainViewController
@@ -138,7 +145,15 @@
         }
     }];
     
-    self.alert = [Alert MR_findAll];
+    self.alert = [Alert MR_findAll].mutableCopy;
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0f
+                                                      target:self
+                                                    selector:@selector(getAlerts)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    
+    
     
 }
 
@@ -184,7 +199,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager requestWhenInUseAuthorization];
     self.mapView = [[GMSMapView alloc] initWithFrame:CGRectMake(0, self.default_Y_mapView, SCREEN_WIDTH, self.heighTableView)];
-    self.mapView.settings.myLocationButton = YES;
+    //self.mapView.settings.myLocationButton = YES;
     //self.mapView.settings.compassButton = YES;
     // Listen to the myLocation property of GMSMapView.
     [self.mapView addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context: nil];
@@ -358,6 +373,7 @@
     
     if(distance >= DISTANCE || !self.firstLocation)
     {
+        [self.mapView clear];
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.geonames.org/findNearbyPostalCodesJSON?lat=%f&lng=%f&username=bugmenotuser", self.mapView.myLocation.coordinate.latitude, self.mapView.myLocation.coordinate.longitude]];
         NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
         AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -370,31 +386,89 @@
                 {
                     NSArray *zipCodeArray = [dic objectForKey:@"postalCodes"];
                     
+//                    GMSMutablePath *poly = [GMSMutablePath path];
+//                    //Add overlay
+//                    for (NSDictionary *d in zipCodeArray)
+//                    {
+//                        float lat = 0;
+//                        float lng = 0;
+//                        if([d objectForKey:@"lat"] != [NSNull null])
+//                        {
+//                            NSString *s = (NSString *) [d objectForKey:@"lat"];
+//                            lat = s.floatValue;
+//                        }
+//                    
+//                        if([d objectForKey:@"lng"] != [NSNull null])
+//                        {
+//                            NSString *s = (NSString *) [d objectForKey:@"lng"];
+//                            lng = s.floatValue;
+//                        }
+//                        [poly addCoordinate:CLLocationCoordinate2DMake(lat, lng)];
+//                    }
+//                    
+//                    GMSPolygon *polygon = [GMSPolygon polygonWithPath:poly];
+//                    polygon.fillColor = [UIColor colorWithRed:0 green:0.25 blue:0 alpha:0.3];
+//                    polygon.strokeColor = [UIColor greenColor];
+//                    polygon.strokeWidth = 5;
+//                    polygon.map = self.mapView;
+                    
                     NSDictionary *firstData = zipCodeArray.count ?  [zipCodeArray objectAtIndex:1] : nil ;
                     
                     id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
                     
-                    AlertsRequest *request = [AlertsRequest new];
                     NSString *zip = (NSString *)[firstData objectForKey:@"postalCode"];
-                    request.zipCode = 1605;
                     
-                    [service getAlertsWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
-                        NSLog(@"Println: %@",response.result);
-                        
-                        //TODO: Parse data
+                    [service getAlertsWithZip:zip.integerValue withCompletion:^(RESTResponse *response, NSError *error) {
+                        if (response.result) {
+                            [self.alert removeAllObjects];
+                            NSLog(@"Println: %@",response.result);
+                            NSArray *resp = (NSArray *)response.result;
+                            for (int i = 0; i < resp.count; i++) {
+                                [self.alert addObject:(Alert *)response.result[i]];
+                                [self.tblMain reloadData];
+                            }
+                        }
                     }];
                     
+                    [service getPin:[zip integerValue] withCompletion:^(RESTResponse *response, NSError *error) {
+                        Location *loc = (Location *)response.result;
+                        
+                        self.currentLocationInfo = loc;
+                        GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
+                        marker.title = loc.location;
+
+                        NSString *overall = @"0.0";
+                        
+                        if(loc.safety.overall != nil)
+                            overall = loc.safety.overall;
+                        
+                        marker.snippet = [NSString stringWithFormat:@"%@\nSafety Score: %@", loc.safety_message, overall];
+                        marker.infoWindowAnchor = CGPointMake(0.5, 0.5);
+                        marker.map = self.mapView;
+                        
+                        [self.mapView setSelectedMarker:marker];
+                        
+//                        //Add overlay
+//                        GMSCircle *circ = [GMSCircle circleWithPosition:location.coordinate
+//                                                                 radius:1000];
+//                        
+//                        circ.fillColor = [UIColor greenColor];
+//                        circ.strokeColor = [UIColor redColor];
+//                        circ.strokeWidth = 5;
+//                        circ.map = self.mapView;
+                        GMSCameraPosition *cam = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
+                                                                             longitude:location.coordinate.longitude
+                                                                                  zoom:ZOOM
+                                                                               bearing:BEARING viewingAngle:VIEWANGLE];
+                        [self.mapView animateToCameraPosition:cam];
+                    }];
                 }
             }
 
         } failure:nil];
         [operation start];
         
-        GMSCameraPosition *cam = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
-                                                             longitude:location.coordinate.longitude
-                                                                  zoom:ZOOM
-                                                               bearing:BEARING viewingAngle:VIEWANGLE];
-        [self.mapView animateToCameraPosition:cam];
+        
         
         self.firstLocation = location;
     }
@@ -404,6 +478,21 @@
     
 }
 
+//- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker
+//{
+//    UIView *view = [[UIView alloc] init];
+//    view.frame = CGRectMake(0, 0, 280, 40);
+//    view.backgroundColor = [UIColor colorWithRed:0.5 green:0.8 blue:0.4 alpha:1.0];
+//    
+//    return view;
+//}
+- (IBAction)infoButton_Action:(id)sender {
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    
+    NSString *str = [NSString stringWithFormat: @"Disaster: %@\nDrugs: %@\nViolence: %@\nFire: %@\nTraffic: %@\nOverall: %@\n", self.currentLocationInfo.safety.disaster, self.currentLocationInfo.safety.drugs, self.currentLocationInfo.safety.violence, self.currentLocationInfo.safety.fire, self.currentLocationInfo.safety.traffic?:@"None", self.currentLocationInfo.safety.overall];
+    
+    [alert showInfo:self title:@"Safety Score" subTitle:str closeButtonTitle:@"Done" duration:0.0f]; // Info
+}
 
 - (NSArray *)alertForPredicate:(NSPredicate *)predicate{
     return [Alert MR_findAllSortedBy:@"dateCreated" ascending:YES withPredicate:predicate];
@@ -417,6 +506,23 @@
         DetailViewController *detailVC = segue.destinationViewController;
         detailVC.alertID = alert.alertID;
     }
+}
+
+- (void)getAlerts{
+    id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[AppDelegate delegate].mainObjectManager];
+    
+    [service getAlertsWithZip:self.currentLocationInfo.zip.integerValue withCompletion:^(RESTResponse *response, NSError *error) {
+        if (response.result) {
+            [self.alert removeAllObjects];
+            NSLog(@"Println: %@",response.result);
+            NSArray *resp = (NSArray *)response.result;
+            for (int i = 0; i < resp.count; i++) {
+                [self.alert addObject:(Alert *)response.result[i]];
+                [self.tblMain reloadData];
+            }
+        }
+       
+    }];
 }
 
 @end

@@ -9,8 +9,8 @@
 #import "RESTRequest.h"
 
 typedef NS_ENUM(NSInteger, Severity) {
-    Info,
-    Warning,
+    Information,
+    InfoWarning,
     Emergency
 };
 

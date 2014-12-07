@@ -23,7 +23,11 @@
 		7F65F1AB1A331061000ED52D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1AA1A331061000ED52D /* MainViewController.m */; };
 		7F65F1AE1A335E72000ED52D /* GeoNamesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1AD1A335E72000ED52D /* GeoNamesResponse.m */; };
 		7F65F1B11A336105000ED52D /* GeoNamesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1B01A336105000ED52D /* GeoNamesRequest.m */; };
-		7F65F1B61A3368E7000ED52D /* BantayCiudad.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 7F65F1B51A3368E7000ED52D /* BantayCiudad.xcdatamodel */; };
+		F9A1BA8B1A341CB700E16ECC /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A1BA891A341CB700E16ECC /* Location.m */; };
+		F9A1BA8E1A341CC400E16ECC /* SafetyScore.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A1BA8C1A341CC400E16ECC /* SafetyScore.m */; };
+		F9A1BA911A341EDF00E16ECC /* Location+REST.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A1BA8F1A341EDF00E16ECC /* Location+REST.m */; };
+		F9A1BA961A34201800E16ECC /* SafetyScore+REST.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A1BA941A34201800E16ECC /* SafetyScore+REST.m */; };
+		F9A1BA981A342D4500E16ECC /* BantayCiudad.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = F9A1BA971A342D4500E16ECC /* BantayCiudad.xcdatamodel */; };
 		F9BE0604AFA5FE20A0CA29BA /* libPods-BantayCiudad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBAE706C2CFBE66E9C610869 /* libPods-BantayCiudad.a */; };
 		F9BFC4DC1A336C9E008AE740 /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BFC4DA1A336C9E008AE740 /* FeedCell.m */; };
 		F9BFC4DD1A336C9E008AE740 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BFC4DB1A336C9E008AE740 /* FeedCell.xib */; };
@@ -85,10 +89,18 @@
 		7F65F1AD1A335E72000ED52D /* GeoNamesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoNamesResponse.m; sourceTree = "<group>"; };
 		7F65F1AF1A336105000ED52D /* GeoNamesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoNamesRequest.h; sourceTree = "<group>"; };
 		7F65F1B01A336105000ED52D /* GeoNamesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoNamesRequest.m; sourceTree = "<group>"; };
-		7F65F1B51A3368E7000ED52D /* BantayCiudad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = BantayCiudad.xcdatamodel; path = BantayCiudad/BantayCiudad.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		9475BB2F7F689FFB8F34CD71 /* Pods-BantayCiudad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BantayCiudad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BantayCiudad/Pods-BantayCiudad.debug.xcconfig"; sourceTree = "<group>"; };
 		EBAE706C2CFBE66E9C610869 /* libPods-BantayCiudad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BantayCiudad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F948719D1A32FA5A00BBBADD /* BantayCiudad-Header.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BantayCiudad-Header.pch"; sourceTree = "<group>"; };
+		F9A1BA891A341CB700E16ECC /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		F9A1BA8A1A341CB700E16ECC /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		F9A1BA8C1A341CC400E16ECC /* SafetyScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyScore.m; sourceTree = "<group>"; };
+		F9A1BA8D1A341CC400E16ECC /* SafetyScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyScore.h; sourceTree = "<group>"; };
+		F9A1BA8F1A341EDF00E16ECC /* Location+REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Location+REST.m"; sourceTree = "<group>"; };
+		F9A1BA901A341EDF00E16ECC /* Location+REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Location+REST.h"; sourceTree = "<group>"; };
+		F9A1BA941A34201800E16ECC /* SafetyScore+REST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SafetyScore+REST.m"; path = "BantayCiudad/Helpers/SafetyScore+REST.m"; sourceTree = SOURCE_ROOT; };
+		F9A1BA951A34201800E16ECC /* SafetyScore+REST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SafetyScore+REST.h"; path = "BantayCiudad/Helpers/SafetyScore+REST.h"; sourceTree = SOURCE_ROOT; };
+		F9A1BA971A342D4500E16ECC /* BantayCiudad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = BantayCiudad.xcdatamodel; path = BantayCiudad/BantayCiudad.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		F9BFC4D91A336C9E008AE740 /* FeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCell.h; sourceTree = SOURCE_ROOT; };
 		F9BFC4DA1A336C9E008AE740 /* FeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell.m; sourceTree = SOURCE_ROOT; };
 		F9BFC4DB1A336C9E008AE740 /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = SOURCE_ROOT; };
@@ -173,9 +185,11 @@
 		382387A81A32F28300A734CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F9A1BA971A342D4500E16ECC /* BantayCiudad.xcdatamodel */,
+				F9A1BA941A34201800E16ECC /* SafetyScore+REST.m */,
+				F9A1BA951A34201800E16ECC /* SafetyScore+REST.h */,
 				F9BFCBDD1A33367800912C46 /* Alert.h */,
 				F9BFCBDE1A33367800912C46 /* Alert.m */,
-				7F65F1B51A3368E7000ED52D /* BantayCiudad.xcdatamodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +278,10 @@
 		7F65F1931A330B12000ED52D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F9A1BA8C1A341CC400E16ECC /* SafetyScore.m */,
+				F9A1BA8D1A341CC400E16ECC /* SafetyScore.h */,
+				F9A1BA891A341CB700E16ECC /* Location.m */,
+				F9A1BA8A1A341CB700E16ECC /* Location.h */,
 				382387C21A33761E00A734CD /* Custom Views */,
 				F9BFCC001A33384D00912C46 /* AppConfiguration.h */,
 				F9BFCC011A33384D00912C46 /* AppConfiguration.m */,
@@ -319,6 +337,8 @@
 		F9BFCBE11A3336B000912C46 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				F9A1BA8F1A341EDF00E16ECC /* Location+REST.m */,
+				F9A1BA901A341EDF00E16ECC /* Location+REST.h */,
 				F9BFCBFD1A33384100912C46 /* RESTResponse.h */,
 				F9BFCBFE1A33384100912C46 /* RESTResponse.m */,
 				F9BFCBE61A33370400912C46 /* Alert+REST.h */,
@@ -529,16 +549,20 @@
 				F9BFCBE51A3336DC00912C46 /* UserRequest.m in Sources */,
 				F9BFC4E01A337075008AE740 /* UIImageView+UIActivityIndicator.m in Sources */,
 				F9BFCBF81A33380E00912C46 /* RESTServiceSupport.m in Sources */,
+				F9A1BA911A341EDF00E16ECC /* Location+REST.m in Sources */,
 				F9BFCBDF1A33367800912C46 /* Alert.m in Sources */,
 				F9BFCBF91A33380E00912C46 /* RKObjectManager+App.m in Sources */,
+				F9A1BA8E1A341CC400E16ECC /* SafetyScore.m in Sources */,
 				F9BFCBEB1A33373A00912C46 /* RESTAlertService.m in Sources */,
 				F9BFC4E31A33B6E6008AE740 /* RESTImageUploadService.m in Sources */,
+				F9A1BA961A34201800E16ECC /* SafetyScore+REST.m in Sources */,
+				F9A1BA8B1A341CB700E16ECC /* Location.m in Sources */,
 				382387C51A33761E00A734CD /* CircularImageView.m in Sources */,
 				F9BFCC071A33390600912C46 /* AlertsRequest.m in Sources */,
+				F9A1BA981A342D4500E16ECC /* BantayCiudad.xcdatamodel in Sources */,
 				7F65F19B1A330B90000ED52D /* README.md in Sources */,
 				F9BFCC0A1A33392300912C46 /* ClientAccessConstants.m in Sources */,
 				382387B31A32F98500A734CD /* DetailViewController.m in Sources */,
-				7F65F1B61A3368E7000ED52D /* BantayCiudad.xcdatamodel in Sources */,
 				7F65F19C1A330B90000ED52D /* SLParallaxController.m in Sources */,
 				7F65F1AB1A331061000ED52D /* MainViewController.m in Sources */,
 				382387AD1A32F2F000A734CD /* AppDelegate.m in Sources */,
@@ -669,7 +693,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "BantayCiudad/BantayCiudad-Header.pch";
 				INFOPLIST_FILE = BantayCiudad/Info.plist;
@@ -684,7 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "BantayCiudad/BantayCiudad-Header.pch";
 				INFOPLIST_FILE = BantayCiudad/Info.plist;

@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 4
 
+// ALAlertBanner
+#define COCOAPODS_POD_AVAILABLE_ALAlertBanner
+#define COCOAPODS_VERSION_MAJOR_ALAlertBanner 0
+#define COCOAPODS_VERSION_MINOR_ALAlertBanner 3
+#define COCOAPODS_VERSION_PATCH_ALAlertBanner 1
+
 // Google-Maps-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Google_Maps_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Google_Maps_iOS_SDK 1
@@ -143,6 +149,12 @@
 #define COCOAPODS_VERSION_MAJOR_RestKit_Support 0
 #define COCOAPODS_VERSION_MINOR_RestKit_Support 23
 #define COCOAPODS_VERSION_PATCH_RestKit_Support 3
+
+// SCLAlertView-Objective-C
+#define COCOAPODS_POD_AVAILABLE_SCLAlertView_Objective_C
+#define COCOAPODS_VERSION_MAJOR_SCLAlertView_Objective_C 0
+#define COCOAPODS_VERSION_MINOR_SCLAlertView_Objective_C 3
+#define COCOAPODS_VERSION_PATCH_SCLAlertView_Objective_C 5
 
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage

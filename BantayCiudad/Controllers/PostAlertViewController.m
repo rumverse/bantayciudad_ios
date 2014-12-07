@@ -44,7 +44,7 @@
     [self.sendButton addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     request = [AlertsRequest new];
-    [request setSeverityType:Info];
+    [request setSeverityType:Information];
     
     self.view.backgroundColor = [UIColor paperColorGray300];
     
@@ -86,10 +86,10 @@
     UISegmentedControl *segment = (UISegmentedControl *)sender;
     switch (segment.selectedSegmentIndex) {
         case 0:
-            [request setSeverityType:Info];
+            [request setSeverityType:Information];
             break;
         case 1:
-            [request setSeverityType:Warning];
+            [request setSeverityType:InfoWarning];
             break;
         case 2:
             [request setSeverityType:Emergency];

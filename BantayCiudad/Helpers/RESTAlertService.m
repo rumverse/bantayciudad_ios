@@ -12,10 +12,13 @@
 
 #import "Alert+REST.h"
 
+#import "Location+REST.h"
 
-static NSString *const kEndpointGetAlerts = @"/alerts/feeds";
+
+static NSString *const kEndpointGetAlerts = @"/alerts/feeds/";
 static NSString *const kEndpointSendAlert = @"/alerts";
 static NSString *const kEndpointGetAlertDetail = @"/getalert";
+static NSString *const kEndpointLocation = @"/location/";
 
 @implementation RESTAlertService
 
@@ -52,11 +55,30 @@ static NSString *const kEndpointGetAlertDetail = @"/getalert";
                                                                            pathPattern:kEndpointSendAlert
                                                                                keyPath:nil
                                                                            statusCodes:okStatusCodes]];
+    
+    
+    [manager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:[RESTResponse responseMappingForResult:@"result" mapping:[Location objectMappingForStore:manager.managedObjectStore]]
+                                                                                method:RKRequestMethodGET
+                                                                           pathPattern:kEndpointLocation
+                                                                               keyPath:nil
+                                                                           statusCodes:okStatusCodes]];
 
 }
 
 - (void)getAlertsWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *, NSError *))completion{
     [self handleStandardGETObject:request forEntity:YES path:kEndpointGetAlerts parameters:nil authRequired:NO finished:^(id result, NSError *error) {
+        RESTResponse *response = (RESTResponse *)result;
+        completion(response, completion);
+    }];
+}
+
+- (void)getAlertsWithZip:(NSInteger) zip withCompletion:(void (^)(RESTResponse *, NSError *))completion
+{
+    NSDictionary *param = @{
+                            @"zip": @(1232),
+                            };
+    
+    [self handleStandardGETObject:nil forEntity:YES path:kEndpointGetAlerts parameters:param authRequired:NO finished:^(id result, NSError *error) {
         RESTResponse *response = (RESTResponse *)result;
         completion(response, completion);
     }];
@@ -75,5 +97,19 @@ static NSString *const kEndpointGetAlertDetail = @"/getalert";
         completion(response, error);
     }];
 }
+
+- (void)getPin:(NSInteger) zip withCompletion:(void (^)(RESTResponse *, NSError *))completion
+{
+    NSDictionary *param = @{
+                            @"zip": @(1232),
+                            };
+    
+    [self handleStandardGETObject:nil forEntity:YES path:kEndpointLocation parameters:param authRequired:NO finished:^(id result, NSError *error) {
+        RESTResponse *response = (RESTResponse * )result;
+        completion(response, completion);
+    }];
+}
+
+
 
 @end

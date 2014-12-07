@@ -54,6 +54,8 @@
         [service getAlertDetailForID:_alertID withCompletion:^(RESTResponse *response, NSError *error) {
             if (response.result) {
                 NSLog(@"response: %@",response.result);
+                [self setData:(Alert *)response.result];
+                [self.descriptionLabel sizeToFit];
             }
             else{
                 NSLog(@"Error: %@",error.localizedDescription);
@@ -64,6 +66,9 @@
         [self setData:alert];
         [self.descriptionLabel sizeToFit];
     }
+    
+    self.descriptionLabel.backgroundColor = [UIColor paperColorGray300];
+    self.descriptionLabel.superview.backgroundColor = [UIColor paperColorGray300];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,6 +77,9 @@
 }
 
 - (void)setData:(Alert *)alert{
+    if (alert.photo.isEmpty) {
+        self.imageViewHeightConstraint.constant = 0.0;
+    }
     self.nameLabel.text = alert.userName;
     self.locationLabel.text = @"Pasig, City";
     self.titleLabel.text = @"I am the title";

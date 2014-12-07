@@ -20,6 +20,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="BantayCiudad" id="WwK-c0-z46">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="2Um-n2-wnQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="q46-L3-ZMr">
+                                <rect key="frame" x="16" y="7" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="infoButton_Action:" destination="Ejg-v8-6uq" eventType="touchUpInside" id="WfF-hv-CSE"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PPX-eD-eo8">
                             <connections>
                                 <segue destination="l8G-f8-rxx" kind="show" id="4IQ-Ye-pmA"/>
@@ -29,11 +41,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addAlert" destination="PPX-eD-eo8" id="Pzm-FF-k6m"/>
+                        <outlet property="infoButton" destination="q46-L3-ZMr" id="MlC-y7-pXX"/>
+                        <segue destination="uV0-9B-vbV" kind="show" identifier="DetailViewControllerSegue" id="JKV-q7-0lk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1DL-HT-wWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="366" y="-220"/>
+            <point key="canvasLocation" x="375" y="-285"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="MFG-Kf-3YX">
@@ -100,7 +114,7 @@
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s4o-Qa-GbJ">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ci_imgplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="s4o-Qa-GbJ">
                                                 <rect key="frame" x="0.0" y="180" width="320" height="200"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -179,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltk-Wc-btl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="-225"/>
+            <point key="canvasLocation" x="-181.5" y="-504"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8pA-Db-kjM">
@@ -197,7 +211,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ia8-70-a8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-178.5" y="-220"/>
+            <point key="canvasLocation" x="-598.5" y="-196"/>
         </scene>
         <!--Post Alert View Controller-->
         <scene sceneID="FMm-WO-yAj">
@@ -287,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnQ-br-9b7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="-215"/>
+            <point key="canvasLocation" x="936" y="-260"/>
         </scene>
     </scenes>
     <resources>

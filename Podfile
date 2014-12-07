@@ -25,4 +25,8 @@ pod 'TPKeyboardAvoiding', '~> 1.2.3'
 
 pod 'MRProgress', '~> 0.4.3'
 
+pod 'ALAlertBanner', '~>0.3.1'
+
+pod 'SCLAlertView-Objective-C'
+
 end
