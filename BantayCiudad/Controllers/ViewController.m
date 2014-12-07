@@ -30,6 +30,8 @@
          
         }
     }];
+    
+    self.view.backgroundColor = [UIColor paperColorGray300];
 }
 
 - (void)didReceiveMemoryWarning {

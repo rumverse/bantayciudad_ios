@@ -83,6 +83,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
+    
+    AlertsRequest *req = [AlertsRequest new];
+    req.zipCode = 1605;
+
+    [service getAlertsWithRequest:req withCompletion:^(RESTResponse *response, NSError *error) {
+        NSLog(@"Println: %@",response.result);
+        
+        //TODO: Parse data
+    }];
 
     
     self.tblMain = [[UITableView alloc]  initWithFrame: CGRectMake(0, 20, SCREEN_WIDTH, self.heighTableView)];
@@ -109,9 +119,6 @@
     [self.view addSubview:self.tblMain];
     
     [self setupMapView];
-    
-    id<AlertService> service = [[RESTAlertService alloc]initWithObjectManager:[[AppDelegate delegate]mainObjectManager]];
-    
     
     AlertsRequest *request = [AlertsRequest new];
     request.zipCode = 1605;

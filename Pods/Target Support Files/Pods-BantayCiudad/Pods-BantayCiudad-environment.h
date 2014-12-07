@@ -84,6 +84,12 @@
 #define COCOAPODS_VERSION_MINOR_RestKit_Support 23
 #define COCOAPODS_VERSION_PATCH_RestKit_Support 3
 
+// SCLAlertView-Objective-C
+#define COCOAPODS_POD_AVAILABLE_SCLAlertView_Objective_C
+#define COCOAPODS_VERSION_MAJOR_SCLAlertView_Objective_C 0
+#define COCOAPODS_VERSION_MINOR_SCLAlertView_Objective_C 3
+#define COCOAPODS_VERSION_PATCH_SCLAlertView_Objective_C 5
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3
@@ -107,4 +113,10 @@
 #define COCOAPODS_VERSION_MAJOR_TransitionKit 2
 #define COCOAPODS_VERSION_MINOR_TransitionKit 1
 #define COCOAPODS_VERSION_PATCH_TransitionKit 0
+
+// UIColor+BFPaperColors
+#define COCOAPODS_POD_AVAILABLE_UIColor_BFPaperColors
+#define COCOAPODS_VERSION_MAJOR_UIColor_BFPaperColors 1
+#define COCOAPODS_VERSION_MINOR_UIColor_BFPaperColors 3
+#define COCOAPODS_VERSION_PATCH_UIColor_BFPaperColors 1
 

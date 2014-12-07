@@ -12,5 +12,6 @@
 
 #import "NSString+Additions.h"
 #import "AppDelegate+Additions.h"
+#import <UIColor+BFPaperColors/UIColor+BFPaperColors.h>
 
 #endif
