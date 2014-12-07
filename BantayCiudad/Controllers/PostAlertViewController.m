@@ -12,6 +12,8 @@
 #import "RESTImageUploadService.h"
 #import <AFNetworking/AFHTTPRequestOperation.h>
 
+#import <MRProgress/MRProgress.h>
+
 @interface PostAlertViewController () <UITextViewDelegate>
 {
     AlertsRequest *request;
@@ -30,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.title = @"Add Alert";
     
     UITapGestureRecognizer *tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
@@ -52,7 +56,7 @@
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(launchCamera:)];
     [self.imageView addGestureRecognizer:tapGesture];
-    self.imageView.hidden = YES;
+    self.imageView.hidden = NO;
 }
 
 -(void)startsWithPound:(NSString *)str {
@@ -104,12 +108,14 @@
     request.alertType = Traffic;
     request.userName = @"mylene@onvolo.com";
     request.userID = 2;
-
+    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
     [service sendAlertWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
         if (!response.error.isEmpty) {
             NSLog(@"Alert ID:%@",response.alertID);
         }
         else{
+            [MRProgressOverlayView dismissOverlayForView:self.navigationController.view animated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
             NSLog(@"Error: %@",error.localizedDescription);
         }
         
@@ -125,6 +131,8 @@
         if (!error) {
             
         }
+        [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }];
 }
 
@@ -141,7 +149,7 @@
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
     picker.delegate = (id)self;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:picker animated:NO completion:NULL];
+    [self presentViewController:picker animated:YES completion:NULL];
 }
 
 #pragma mark - UIImagePickerControllerDelegate

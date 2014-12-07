@@ -9,7 +9,7 @@
 @class AlertsRequest;
 @protocol AlertService <NSObject>
 
-- (void)getAlertsWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
+- (void)getAlertsWithRequest:(NSInteger)zip withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
 
 - (void)sendAlertWithRequest:(AlertsRequest *)request withCompletion:(void (^)(RESTResponse *response, NSError *error))completion;
 
