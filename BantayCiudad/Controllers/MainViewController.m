@@ -22,11 +22,11 @@
 #define SCREEN_HEIGHT_WITHOUT_STATUS_BAR     [[UIScreen mainScreen] bounds].size.height - 20
 #define SCREEN_WIDTH                         [[UIScreen mainScreen] bounds].size.width
 #define HEIGHT_STATUS_BAR                    20
-#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 100
-#define DEFAULT_HEIGHT_HEADER                200.0f
+#define Y_DOWN_TABLEVIEW                     SCREEN_HEIGHT_WITHOUT_STATUS_BAR - 35
+#define DEFAULT_HEIGHT_HEADER                235.0f
 #define MIN_HEIGHT_HEADER                    10.0f
 #define DEFAULT_Y_OFFSET                     ([[UIScreen mainScreen] bounds].size.height == 480.0f) ? -200.0f : -250.0f
-#define FULL_Y_OFFSET                        -200.0f
+#define FULL_Y_OFFSET                        -20.0f
 #define MIN_Y_OFFSET_TO_REACH                -30
 #define OPEN_SHUTTER_LATITUDE_MINUS          .005
 #define CLOSE_SHUTTER_LATITUDE_MINUS         .018
@@ -84,9 +84,11 @@
 
     
     self.tblMain = [[UITableView alloc]  initWithFrame: CGRectMake(0, 20, SCREEN_WIDTH, self.heighTableView)];
+
     self.tblMain.tableHeaderView  = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, self.heighTableViewHeader)];
     [self.tblMain setBackgroundColor:[UIColor clearColor]];
     [self.tblMain registerNib:[FeedCell nib] forCellReuseIdentifier:[FeedCell reuseIdentifier]];
+    self.tblMain.separatorInset = UIEdgeInsetsZero;
     self.tblMain.estimatedRowHeight = 75.0;
     self.tblMain.rowHeight = UITableViewAutomaticDimension;
     
@@ -113,7 +115,7 @@
     request.zipCode = 1605;
     request.latitude = 121.65;
     request.longitude = 54.1212;
-    request.alertDescription = @"Traffic Accident with Bus and Jeepney";
+    request.alertDescription = @"Traffic Accident with Bus and Kenneth";
     request.severityType = Warning;
     request.userType = Authority;
     request.alertType = Traffic;
@@ -165,7 +167,7 @@
     _latitudeUserDown           = OPEN_SHUTTER_LATITUDE_MINUS;
     _default_Y_mapView          = DEFAULT_Y_OFFSET;
     _headerYOffSet              = DEFAULT_Y_OFFSET;
-    _heightMap                  = 1000.0f;
+    _heightMap                  = 1020.0f;
     _regionAnimated             = YES;
     _userLocationUpdateAnimated = YES;
 }
@@ -213,6 +215,7 @@
                          self.tblMain.tableHeaderView = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, self.minHeighTableViewHeader)];
                          self.mapView.frame = CGRectMake(0, FULL_Y_OFFSET, self.mapView.frame.size.width, self.heightMap);
                          self.tblMain.frame = CGRectMake(0, self.Y_tableViewOnBottom, self.tblMain.frame.size.width, self.tblMain.frame.size.height);
+                         self.tblMain.backgroundColor = [UIColor whiteColor];
                      }
                      completion:^(BOOL finished){
                          // Disable cells selection
@@ -233,6 +236,7 @@
                          self.mapView.frame = CGRectMake(0, self.default_Y_mapView, self.mapView.frame.size.width, self.heighTableView);
                          self.tblMain.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.headerYOffSet, self.view.frame.size.width, self.heighTableViewHeader)];
                          self.tblMain.frame = CGRectMake(0, self.default_Y_tableView, self.tblMain.frame.size.width, self.tblMain.frame.size.height);
+                         self.tblMain.backgroundColor = [UIColor clearColor];
                      }
                      completion:^(BOOL finished){
                          // Enable cells selection
@@ -365,7 +369,7 @@
                     
                     AlertsRequest *request = [AlertsRequest new];
                     NSString *zip = (NSString *)[firstData objectForKey:@"postalCode"];
-                    request.zipCode = [zip integerValue];
+                    request.zipCode = 1605;
                     
                     [service getAlertsWithRequest:request withCompletion:^(RESTResponse *response, NSError *error) {
                         NSLog(@"Println: %@",response.result);

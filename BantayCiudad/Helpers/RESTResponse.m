@@ -15,8 +15,7 @@
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[self class]];
     [mapping addAttributeMappingsFromDictionary:@{@"status":@"status",
                                                   @"error":@"error",
-                                                  @"result.alertid":@"alertID",
-                                                  @"result":@"isSuccess"}];
+                                                  @"result.alertid":@"alertID"}];
     if ( resultMapping != nil ) {
         [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:keyPath
                                                                                 toKeyPath:@"result"
